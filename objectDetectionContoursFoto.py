@@ -44,13 +44,9 @@ if __name__ == '__main__':
     # Take each frame
     while True:
 
-        resizeImage = cv2.imread('left.jpg')
-    #    fullImage = cv2.resize(fullImageRaw, (0,0), fx=0.3, fy=0.3)
-      #  resizeImage = cv2.resize(image, (0, 0), fx=scaleFactor, fy=scaleFactor)
-        processingImage = resizeImage[1200:1450, 350:2242]
+        image = cv2.imread('left.jpg')
+        processingImage = image[1200:1450, 350:2242]
         referenceImage = processingImage.copy()
-     #   processingImage = cv2.resize(cropImage, (0, 0), fx=scaleFactor, fy=scaleFactor)
-     #   frame = cv2.resize(image, (0,0), fx=0.3, fy=0.3)
 
         # convert to greyscale
         processingGrey = cv2.cvtColor(processingImage, cv2.COLOR_BGR2GRAY)
@@ -91,28 +87,18 @@ if __name__ == '__main__':
         contours2, hierarchy2 = cv2.findContours(filteredBinaryImage2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
         for cnt in contours2:
-            #print("array")
-            #print(cnt)
-
-            #cv2.circle(frame, (cnt[0], cnt[1]), 3, (0, 255, 0), -1)
             contourArea = cv2.contourArea(cnt)
-         #   print(contourArea)
-         #   print(binRectangleAreaMin)
-         #   print(binRectangleAreaMax)
             if binRectangleAreaMin < contourArea < binRectangleAreaMax:
-            #    print(contourArea)
+
                 cv2.drawContours(processingImage, [cnt], 0, (0, 255, 0), 2)
 
+                # find and draw endpoints of contour
                 hull = cv2.convexHull(cnt)
-               # print(hull)
-
                 for points in hull:
-
                     point = points[0]
-                 #   print(point[0], point[1])
                     cv2.circle(processingImage, (point[0], point[1]), 5, (0, 0, 255))
 
-                # get centroid
+                # get centroid of contour
                 contourMoments = cv2.moments(cnt)
                 centroidX = int(contourMoments['m10']/contourMoments['m00'])
                 centroidY = int(contourMoments['m01']/contourMoments['m00'])
@@ -129,21 +115,14 @@ if __name__ == '__main__':
 
                 cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (contourCentroidX, contourCentroidY), (0, 0, 255), 2)
 
-
-     #   cv2.imshow('crop', crop_img);
         cv2.imshow('crop', processingImage)
-     #   cv2.imshow('original', resizeImage)
-     #   cv2.imshow('original', image)
         cv2.imshow('contours (opening2)', filteredBinaryImage2)
         cv2.imshow('binary (binaryImage2)', binaryImage2)
         cv2.imshow('after filter (opening)', filteredBinaryImage)
         cv2.imshow('fullBinary', referenceImage)
 
-    #    cv2.imshow('hsv mask', hsv_opening)
-        #print(contours2)
-
         if cv2.waitKey(1) & 0xFF == ord('q'):
-         break
+            break
 
     cv2.waitKey(0)
     cv2.destroyAllWindows()
