@@ -2,15 +2,19 @@ __author__ = 'Dominic Schuermann'
 
 import sys
 import math
+import ConfigParser
+
+config = ConfigParser.RawConfigParser()
+config.read('definitions.cfg')
 
 # define real environment fields - all dimensions in cm
-realFieldSizeX = 150
-realFieldSizeY = 250
-binRadius = 30
-startToBinCentroid = 225
+realFieldSizeX = config.getfloat('RealField', 'realFieldSizeX')
+realFieldSizeY = config.getfloat('RealField', 'realFieldSizeY')
+binRadius = config.getfloat('RealField', 'binRadius')
+startToBinCentroidY = config.getfloat('RealField', 'startToBinCentroidY')
 
 # define camera environment fields - dimensions in px
-cameraFieldSizeX = 1820
+cameraFieldSizeX = config.getfloat('CameraField', 'cameraFieldSizeX')
 
 
 def calculateAngle(xToAdjust):
@@ -24,7 +28,7 @@ def calculateAngle(xToAdjust):
     print ("realXToAdjust", realXtoAdjust)
 
     # calculate angle to correct
-    angleInRadians = math.atan(float(realXtoAdjust) / float(startToBinCentroid))
+    angleInRadians = math.atan(float(realXtoAdjust) / float(startToBinCentroidY))
     print ("angle in radians", angleInRadians)
     angleInDegrees = math.degrees(angleInRadians)
     print ("angle in degrees", angleInDegrees)
