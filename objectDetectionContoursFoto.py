@@ -83,7 +83,7 @@ def getDistanceToBin():
         fullCentroidX = int(fullMoments['m10']/fullMoments['m00'])
         fullCentroidY = int(fullMoments['m01']/fullMoments['m00'])
         cv2.circle(referenceImage, (fullCentroidX, fullCentroidY), 3, (0, 0, 255))
-        print(fullCentroidX)
+        #print(fullCentroidX)
         pictureCentroidX = fullCentroidX
         pictureCentroidY = fullCentroidY
 
@@ -102,7 +102,7 @@ def getDistanceToBin():
 
             # find and draw endpoints of contour
             hull = cv2.convexHull(cnt)
-            print(hull)
+            #print(hull)
             for points in hull:
                 point = points[0]
                 cv2.circle(processingImage, (point[0], point[1]), 5, (0, 0, 255))
@@ -131,6 +131,7 @@ def getDistanceToBin():
             else:
                 # bin is fully seen in picture
                 # calculate centroid
+                print("normal shape")
                 contourMoments = cv2.moments(cnt)
                 centroidX = int(contourMoments['m10']/contourMoments['m00'])
                 centroidY = int(contourMoments['m01']/contourMoments['m00'])
@@ -144,7 +145,7 @@ def getDistanceToBin():
         if not (contourCentroidX is None):
             distanceToCentroid = pictureCentroidX - contourCentroidX
         #    print(distanceToCentroid)
-
+            print("px middleCentroid to contourCentroid", distanceToCentroid)
             return distanceToCentroid
 
             # draw line for debugging

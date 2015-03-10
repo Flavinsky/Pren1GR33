@@ -4,24 +4,24 @@ import sys
 import math
 
 # define real environment fields - all dimensions in cm
-fieldSizeX = 150
-fieldSizeY = 250
+realFieldSizeX = 150
+realFieldSizeY = 250
 binRadius = 30
 startToBinCentroid = 225
 
 # define camera environment fields - dimensions in px
-realFieldSizeX = 1820
+cameraFieldSizeX = 1820
 
 
 def calculateAngle(xToAdjust):
 
-    print("Calculator - createAngle started")
+    print("Calculator - calculateAngle started")
 
     print ("xToAdjust", float(xToAdjust))
-    print ("fieldSizeX", fieldSizeX)
     print ("realFieldSizeX", realFieldSizeX)
-    realXtoAdjust = float(fieldSizeX) / float(realFieldSizeX) * float(xToAdjust)
-    print ("realToAdjust", realXtoAdjust)
+    print ("cameraFieldSizeX", cameraFieldSizeX)
+    realXtoAdjust = float(realFieldSizeX) / float(cameraFieldSizeX) * float(xToAdjust)
+    print ("realXToAdjust", realXtoAdjust)
 
     # calculate angle to correct
     angleInRadians = math.atan(float(realXtoAdjust) / float(startToBinCentroid))
