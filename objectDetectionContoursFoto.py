@@ -4,43 +4,60 @@ __author__ = 'Dominic Schuermann'
 import cv2
 import numpy as np
 import sys
+import ConfigParser
+
+# define config parser
+config = ConfigParser.RawConfigParser()
+config.read('objectDetectionDefinition.cfg')
 
 # define window
 cv2.namedWindow('window')
 
 # define variable
-threshold_value = 0
-threshold_maxvalue = 255
-threshold_maxval_180 = 180
-red = (0, 0, 255, 0)
-
+threshold_value = config.getfloat('BinaryThreshold', 'threshold_value')
+threshold_maxvalue = config.getfloat('BinaryThreshold', 'threshold_maxvalue')
 
 # Bin width = 500px -> declare as max
 # Bin width on left or right side is +/- 300px
 # height defined with crop height of picture
-binContourAreaMin = 300 * 250
-binContourAreaMax = 500 * 250
+binFullWidth = config.getfloat('Bin', 'binFullWidth')
+binFullHeight = config.getfloat('Bin', 'binFullHeight')
+binMinWidth = config.getfloat('Bin', 'binMinWidth')
+binMinHeight = config.getfloat('Bin', 'binMinHeight')
 
-binFullSizeMin = 500 * 180
-binFullSizeMax = 500 * 250
+binContourAreaMin = binMinWidth * binFullHeight
+binContourAreaMax = binFullWidth * binFullHeight
+
+binFullSizeMin = binFullWidth * binMinHeight
+binFullSizeMax = binFullWidth * binFullHeight
 
 # Centroids
 pictureCentroidX = 0
 pictureCentroidY = 0
 contourCentroidX = 0
 contourCentroidY = 0
+differenceCentroidX = 0
 
 
 # define on change method
 def on_change(position):
     pass
 
+
+def calculateCentroidX(cnt):
+    cntMoments = cv2.moments(cnt)
+    calculatedCentroidX = int(cntMoments['m10']/cntMoments['m00'])
+    return calculatedCentroidX
+
 #define trackbar
-cv2.createTrackbar('Threshold Value', 'window', threshold_value, threshold_maxvalue, on_change)
+#cv2.createTrackbar('Threshold Value', 'window', threshold_value, threshold_maxvalue, on_change)
+
 
 
 def getDistanceToBin():
+#if __name__ == '__main__':
 
+    print("----------------------------------------------------------------------")
     print("imageDetection - getDistanceToBin started")
 
     # capture video from camera
@@ -48,7 +65,7 @@ def getDistanceToBin():
     # Take each frame
     #while True:
 
-    image = cv2.imread('middle.jpg')
+    image = cv2.imread('left.jpg')
     processingImage = image[1200:1450, 350:2242]
     referenceImage = processingImage.copy()
 
@@ -62,9 +79,9 @@ def getDistanceToBin():
     referenceGreyInv = cv2.bitwise_not(referenceGrey)
 
     # create binary picture
-    ret, binaryImage1 = cv2.threshold(processingGreyInvCopy, 185, 255, cv2.THRESH_BINARY)
-    ret, binaryImage2 = cv2.threshold(processingGreyInvCopy, 185, 255, cv2.THRESH_BINARY)
-    ret, binaryImage3 = cv2.threshold(processingGreyInvCopy, 185, 255, cv2.THRESH_BINARY)
+    ret, binaryImage1 = cv2.threshold(processingGreyInvCopy, threshold_value, threshold_maxvalue, cv2.THRESH_BINARY)
+    ret, binaryImage2 = cv2.threshold(processingGreyInvCopy, threshold_value, threshold_maxvalue, cv2.THRESH_BINARY)
+    ret, binaryImage3 = cv2.threshold(processingGreyInvCopy, threshold_value, threshold_maxvalue, cv2.THRESH_BINARY)
 
     ret, referenceBinary = cv2.threshold(referenceGreyInv, 0, 255, cv2.THRESH_BINARY)
 
@@ -96,13 +113,8 @@ def getDistanceToBin():
 
             cv2.drawContours(processingImage, [cnt], 0, (0, 255, 0), 2)
 
-        #    print("contourArea:", contourArea)
-        #    print("binFullMin", binFullSizeMin)
-        #    print("binFullMax", binFullSizeMax)
-
             # find and draw endpoints of contour
             hull = cv2.convexHull(cnt)
-            #print(hull)
             for points in hull:
                 point = points[0]
                 cv2.circle(processingImage, (point[0], point[1]), 5, (0, 0, 255))
@@ -110,28 +122,33 @@ def getDistanceToBin():
             # check if bin is fully seen in picture. if not, do special centroid calculation with reference size
             if not binFullSizeMin < contourArea < binFullSizeMax:
                 #bin is not fully seen in picture
-                print("non normal shape")
+                print("----> non normal shape <----")
                 # create reference bin shape for centroid calculation
-                referenceBinShape = np.array([(0, 0), (500, 0), (500, 300), (0, 300), (0, 0)], np.float32)
+                # referenceBinShape = np.array([(0, 0), (binFullSizeX, 0), (binFullSizeX, binFullSizeY), (0, binFullSizeY), (0, 0)], np.float32)
 
-                # calc reference centroid
-                referenceMoments = cv2.moments(referenceBinShape)
-                referenceCentroidX = int(referenceMoments['m10']/referenceMoments['m00'])
-                referenceCentroidY = int(referenceMoments['m01']/referenceMoments['m00'])
+                referenceRelativeCentroidX = binFullWidth / 2
+                print("refRelCentX", referenceRelativeCentroidX)
+
+                x,y,w,h = cv2.boundingRect(cnt)
+                contourRelativeCentroidX = w / 2
+                print("contRelCentX", contourRelativeCentroidX)
+
+                #calculate difference
+                differenceCentroidX = referenceRelativeCentroidX - contourRelativeCentroidX
+                print("diffCentroidX", differenceCentroidX)
 
                 # calc contour centroid
                 contourMoments = cv2.moments(cnt)
                 contourCentroidX = int(contourMoments['m10']/contourMoments['m00'])
+                # for debugging
                 contourCentroidY = int(contourMoments['m01']/contourMoments['m00'])
 
-                #calculate difference
-                centroidDiffX = referenceCentroidX - contourCentroidX
-                centroidDiffY = referenceCentroidY - contourCentroidY
+                print("contAbsCentX", contourCentroidX)
 
             else:
                 # bin is fully seen in picture
                 # calculate centroid
-                print("normal shape")
+                print("----> normal shape <----")
                 contourMoments = cv2.moments(cnt)
                 centroidX = int(contourMoments['m10']/contourMoments['m00'])
                 centroidY = int(contourMoments['m01']/contourMoments['m00'])
@@ -139,30 +156,47 @@ def getDistanceToBin():
              #   print(centroidX)
                 contourCentroidX = centroidX
                 contourCentroidY = centroidY
+                differenceCentroidX = 0
 
     #calculate difference to picture centroid
     if not (pictureCentroidX is None):
         if not (contourCentroidX is None):
             distanceToCentroid = pictureCentroidX - contourCentroidX
-        #    print(distanceToCentroid)
-            print("px middleCentroid to contourCentroid", distanceToCentroid)
-            return distanceToCentroid
 
             # draw line for debugging
-        #    cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (contourCentroidX, contourCentroidY), (0, 0, 255), 2)
+            print("px middle to cont raw", distanceToCentroid)
+            cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (contourCentroidX, contourCentroidY), (0, 0, 255), 6)
 
-        # cv2.imshow('crop', processingImage)
-        # cv2.imshow('contours (opening2)', filteredBinaryImage2)
-        # cv2.imshow('binary (binaryImage2)', binaryImage2)
-        # cv2.imshow('after filter (opening)', filteredBinaryImage)
-        # cv2.imshow('fullBinary', referenceImage)
-        #
-        # if cv2.waitKey(1) & 0xFF == ord('q'):
-        #     break
+            if not (differenceCentroidX is None):
+                # centroid correction if needed
+                if distanceToCentroid < 0:
+                    distanceToCentroid -= differenceCentroidX
+                    # draw line for debugging
+                    cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (int(contourCentroidX + differenceCentroidX), contourCentroidY), (0, 255, 0), 2)
 
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+                elif distanceToCentroid >= 0:
+                    distanceToCentroid += differenceCentroidX
+                    # draw line for debugging
+                    cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (int(contourCentroidX - differenceCentroidX), contourCentroidY), (0, 255, 0), 2)
+
+            print("px middle to cont corrected", distanceToCentroid)
+
+            return distanceToCentroid
+
+
+#         cv2.imshow('crop', processingImage)
+#         cv2.imshow('contours (opening2)', filteredBinaryImage2)
+#         cv2.imshow('binary (binaryImage2)', binaryImage2)
+#         cv2.imshow('after filter (opening)', filteredBinaryImage)
+#         cv2.imshow('fullBinary', referenceImage)
+#         #
+#
+#         if cv2.waitKey(1) & 0xFF == ord('q'):
+#             break
+#
+# cv2.destroyAllWindows()
 
 if __name__ == '__main__':
+    print("----------------------------------------------------------------------")
     print("image detection started")
     sys.exit(getDistanceToBin())

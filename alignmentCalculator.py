@@ -19,6 +19,7 @@ cameraFieldSizeX = config.getfloat('CameraField', 'cameraFieldSizeX')
 
 def calculateAngle(xToAdjust):
 
+    print("----------------------------------------------------------------------")
     print("Calculator - calculateAngle started")
 
     print ("xToAdjust", float(xToAdjust))
