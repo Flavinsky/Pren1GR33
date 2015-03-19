@@ -5,7 +5,7 @@ import math
 import ConfigParser
 
 config = ConfigParser.RawConfigParser()
-config.read('definitions.cfg')
+config.read('alignmentCalculatorDefinitions.cfg')
 
 # define real environment fields - all dimensions in cm
 realFieldSizeX = config.getfloat('RealField', 'realFieldSizeX')
