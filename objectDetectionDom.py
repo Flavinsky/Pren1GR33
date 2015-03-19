@@ -10,9 +10,6 @@ import ConfigParser
 config = ConfigParser.RawConfigParser()
 config.read('objectDetectionDefinition.cfg')
 
-# define window
-cv2.namedWindow('window')
-
 # define threshold
 binaryThreshValue = config.getfloat('Threshold', 'BinaryThreshValue')
 binaryThreshMax = config.getfloat('Threshold', 'BinaryThreshMax')
@@ -31,7 +28,7 @@ areaThreshFactor = config.getfloat('Threshold', 'AreaThreshFactor')
 ReferenceBinWidth = config.getfloat('Bin', 'ReferenceBinWidth')
 
 # Read image and parameters
-img = cv2.imread('right.jpg')
+img = cv2.imread('middle.jpg')
 height, width, depth = img.shape
 
 # calculate analyzed area
@@ -60,7 +57,6 @@ def getDistanceToBin():
 
     processingImage = img[borderY:borderY + analyzedHeight, borderX:borderX + analyzedWidth]
     referenceImage = processingImage.copy()
-    displayImage = processingImage.copy()
 
     # convert to greyscale
     processingGrey = cv2.cvtColor(processingImage, cv2.COLOR_BGR2GRAY)
@@ -89,7 +85,6 @@ def getDistanceToBin():
         # get centroid of whole picture, base reference for angle correction
         fullMoments = cv2.moments(cnt)
         pictureCentroidX = int(fullMoments['m10']/fullMoments['m00'])
-        pictureCentroidY = int(fullMoments['m01']/fullMoments['m00'])
 
     # evaluate contours on picture -> find bin
     contours2, hierarchy2 = cv2.findContours(filteredBinaryImage2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -101,8 +96,6 @@ def getDistanceToBin():
         print("contourMinArea", contourMinArea)
         print("contourMaxArea", contourMaxArea)
         if contourMinArea < contourArea < contourMaxArea:
-
-            cv2.drawContours(displayImage, [cnt], 0, (0, 255, 0), 2)
 
             # find and draw endpoints of contour
             hull = cv2.convexHull(cnt)
@@ -129,8 +122,6 @@ def getDistanceToBin():
                 # calc contour centroid
                 contourMoments = cv2.moments(cnt)
                 contourCentroidX = int(contourMoments['m10']/contourMoments['m00'])
-                # for debugging
-                contourCentroidY = int(contourMoments['m01']/contourMoments['m00'])
 
                 print("contAbsCentX", contourCentroidX)
 
@@ -140,11 +131,8 @@ def getDistanceToBin():
                 print("----> normal shape <----")
                 contourMoments = cv2.moments(cnt)
                 centroidX = int(contourMoments['m10']/contourMoments['m00'])
-                centroidY = int(contourMoments['m01']/contourMoments['m00'])
-                cv2.circle(processingImage, (centroidX, centroidY), 3, (0, 150, 0))
              #   print(centroidX)
                 contourCentroidX = centroidX
-                contourCentroidY = centroidY
                 differenceCentroidX = 0
 
     #calculate difference to picture centroid
@@ -154,19 +142,14 @@ def getDistanceToBin():
 
             # draw line for debugging
             print("px middle to cont raw", distanceToCentroid)
-            cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (contourCentroidX, contourCentroidY), (0, 0, 255), 6)
 
             if not (differenceCentroidX is None):
                 # centroid correction if needed
                 if distanceToCentroid < 0:
                     distanceToCentroid -= differenceCentroidX
-                    # draw line for debugging
-                    cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (int(contourCentroidX + differenceCentroidX), contourCentroidY), (0, 255, 0), 2)
 
                 elif distanceToCentroid >= 0:
                     distanceToCentroid += differenceCentroidX
-                    # draw line for debugging
-                    cv2.line(referenceImage, (pictureCentroidX, pictureCentroidY), (int(contourCentroidX - differenceCentroidX), contourCentroidY), (0, 255, 0), 2)
 
             print("px middle to cont corrected", distanceToCentroid)
 
