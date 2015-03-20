@@ -1,7 +1,7 @@
 __author__ = 'Dominic Schuermann'
 
 
-print("Starting connection test to freescale freedomboard")
+print("Starting connection test for Brushless DC")
 
 import sys
 import serial
