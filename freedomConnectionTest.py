@@ -21,19 +21,19 @@ else:
     sys.exit()
 
 
-ser.write(b'BLDC on\r\n')
+ser.write(b'BLDC on\r')
 sleep(0.5)
 
-ser.write(b'BLDC setrpm 2000\r\n')
+ser.write(b'BLDC setrpm 2000\r')
 sleep(0.5)
 
-ser.write(b'BLDC status\r\n')
+ser.write(b'BLDC status\r')
 sleep(0.5)
 
-ser.write(b'BLDC setrpm 0\r\n')
+ser.write(b'BLDC setrpm 0\r')
 sleep(0.5)
 
-ser.write(b'BLDC off\r\n')
+ser.write(b'BLDC off\r')
 sleep(0.5)
 
 while ser.inWaiting() > 0:
@@ -43,3 +43,4 @@ if out != '':
     print ">>" + out
 
 ser.close()
+print("Connection closed")
