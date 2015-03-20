@@ -36,6 +36,9 @@ sleep(0.5)
 ser.write(b'BLDC off\r')
 sleep(0.5)
 
+ser.write(b'BLDC status\r')
+sleep(0.5)
+
 while ser.inWaiting() > 0:
     out += ser.read(1)
 
