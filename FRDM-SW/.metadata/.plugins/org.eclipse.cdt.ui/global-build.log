@@ -1,0 +1,261 @@
+11:56:50 **** Clean-only build of configuration Debug for project Shell ****
+make clean 
+rm -rf  ./Sources/Stepper_driver/l6480.o  ./Sources/BLDC.o ./Sources/DC.o ./Sources/Error.o ./Sources/Events.o ./Sources/Shell.o ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AS1.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd4.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/CLS1.o ./Generated_Code/CS1.o ./Generated_Code/Cpu.o ./Generated_Code/DC_DIR.o ./Generated_Code/DC_EN.o ./Generated_Code/ExtIntLdd3.o ./Generated_Code/FRTOS1.o ./Generated_Code/LED_blue.o ./Generated_Code/LED_green.o ./Generated_Code/LED_red.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/PE_LDD.o ./Generated_Code/PWM1.o ./Generated_Code/PwmLdd2.o ./Generated_Code/SMasterLdd1.o ./Generated_Code/STP_REF.o ./Generated_Code/Stepperspi.o ./Generated_Code/TU1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/list.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o  ./Sources/Stepper_driver/l6480.d  ./Sources/BLDC.d ./Sources/DC.d ./Sources/Error.d ./Sources/Events.d ./Sources/Shell.d ./Sources/main.d  ./Project_Settings/Startup_Code/startup.d  ./Generated_Code/AS1.d ./Generated_Code/ASerialLdd1.d ./Generated_Code/BitIoLdd1.d ./Generated_Code/BitIoLdd2.d ./Generated_Code/BitIoLdd3.d ./Generated_Code/BitIoLdd4.d ./Generated_Code/BitIoLdd6.d ./Generated_Code/CLS1.d ./Generated_Code/CS1.d ./Generated_Code/Cpu.d ./Generated_Code/DC_DIR.d ./Generated_Code/DC_EN.d ./Generated_Code/ExtIntLdd3.d ./Generated_Code/FRTOS1.d ./Generated_Code/LED_blue.d ./Generated_Code/LED_green.d ./Generated_Code/LED_red.d ./Generated_Code/LEDpin1.d ./Generated_Code/LEDpin2.d ./Generated_Code/LEDpin3.d ./Generated_Code/PE_LDD.d ./Generated_Code/PWM1.d ./Generated_Code/PwmLdd2.d ./Generated_Code/SMasterLdd1.d ./Generated_Code/STP_REF.d ./Generated_Code/Stepperspi.d ./Generated_Code/TU1.d ./Generated_Code/UTIL1.d ./Generated_Code/Vectors.d ./Generated_Code/WAIT1.d ./Generated_Code/croutine.d ./Generated_Code/event_groups.d ./Generated_Code/heap_1.d ./Generated_Code/heap_2.d ./Generated_Code/heap_3.d ./Generated_Code/heap_4.d ./Generated_Code/heap_5.d ./Generated_Code/list.d ./Generated_Code/port.d ./Generated_Code/queue.d ./Generated_Code/tasks.d ./Generated_Code/timers.d  Shell.elf
+' '
+11:56:51 **** Incremental Build of configuration Debug for project Shell ****
+make all 
+'Building file: C:/Users/Flavio/Pren/git_pren-et/stepper/driver/drv/l6480.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -DPL_FRDM -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/Stepper_driver/l6480.d" -MT"Sources/Stepper_driver/l6480.o" -c -o "Sources/Stepper_driver/l6480.o" "C:/Users/Flavio/Pren/git_pren-et/stepper/driver/drv/l6480.c"
+'Finished building: C:/Users/Flavio/Pren/git_pren-et/stepper/driver/drv/l6480.c'
+' '
+'Building file: ../Sources/BLDC.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/BLDC.d" -MT"Sources/BLDC.o" -c -o "Sources/BLDC.o" "../Sources/BLDC.c"
+'Finished building: ../Sources/BLDC.c'
+' '
+'Building file: ../Sources/DC.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/DC.d" -MT"Sources/DC.o" -c -o "Sources/DC.o" "../Sources/DC.c"
+'Finished building: ../Sources/DC.c'
+' '
+'Building file: ../Sources/Error.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/Error.d" -MT"Sources/Error.o" -c -o "Sources/Error.o" "../Sources/Error.c"
+'Finished building: ../Sources/Error.c'
+' '
+'Building file: ../Sources/Events.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/Events.d" -MT"Sources/Events.o" -c -o "Sources/Events.o" "../Sources/Events.c"
+'Finished building: ../Sources/Events.c'
+' '
+'Building file: ../Sources/Shell.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/Shell.d" -MT"Sources/Shell.o" -c -o "Sources/Shell.o" "../Sources/Shell.c"
+'Finished building: ../Sources/Shell.c'
+' '
+'Building file: ../Sources/main.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/main.d" -MT"Sources/main.o" -c -o "Sources/main.o" "../Sources/main.c"
+'Finished building: ../Sources/main.c'
+' '
+'Building file: ../Project_Settings/Startup_Code/startup.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Project_Settings/Startup_Code/startup.d" -MT"Project_Settings/Startup_Code/startup.o" -c -o "Project_Settings/Startup_Code/startup.o" "../Project_Settings/Startup_Code/startup.c"
+'Finished building: ../Project_Settings/Startup_Code/startup.c'
+' '
+'Building file: ../Generated_Code/AS1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/AS1.d" -MT"Generated_Code/AS1.o" -c -o "Generated_Code/AS1.o" "../Generated_Code/AS1.c"
+'Finished building: ../Generated_Code/AS1.c'
+' '
+'Building file: ../Generated_Code/ASerialLdd1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/ASerialLdd1.d" -MT"Generated_Code/ASerialLdd1.o" -c -o "Generated_Code/ASerialLdd1.o" "../Generated_Code/ASerialLdd1.c"
+'Finished building: ../Generated_Code/ASerialLdd1.c'
+' '
+'Building file: ../Generated_Code/BitIoLdd1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/BitIoLdd1.d" -MT"Generated_Code/BitIoLdd1.o" -c -o "Generated_Code/BitIoLdd1.o" "../Generated_Code/BitIoLdd1.c"
+'Finished building: ../Generated_Code/BitIoLdd1.c'
+' '
+'Building file: ../Generated_Code/BitIoLdd2.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/BitIoLdd2.d" -MT"Generated_Code/BitIoLdd2.o" -c -o "Generated_Code/BitIoLdd2.o" "../Generated_Code/BitIoLdd2.c"
+'Finished building: ../Generated_Code/BitIoLdd2.c'
+' '
+'Building file: ../Generated_Code/BitIoLdd3.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/BitIoLdd3.d" -MT"Generated_Code/BitIoLdd3.o" -c -o "Generated_Code/BitIoLdd3.o" "../Generated_Code/BitIoLdd3.c"
+'Finished building: ../Generated_Code/BitIoLdd3.c'
+' '
+'Building file: ../Generated_Code/BitIoLdd4.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/BitIoLdd4.d" -MT"Generated_Code/BitIoLdd4.o" -c -o "Generated_Code/BitIoLdd4.o" "../Generated_Code/BitIoLdd4.c"
+'Finished building: ../Generated_Code/BitIoLdd4.c'
+' '
+'Building file: ../Generated_Code/BitIoLdd6.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/BitIoLdd6.d" -MT"Generated_Code/BitIoLdd6.o" -c -o "Generated_Code/BitIoLdd6.o" "../Generated_Code/BitIoLdd6.c"
+'Finished building: ../Generated_Code/BitIoLdd6.c'
+' '
+'Building file: ../Generated_Code/CLS1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/CLS1.d" -MT"Generated_Code/CLS1.o" -c -o "Generated_Code/CLS1.o" "../Generated_Code/CLS1.c"
+'Finished building: ../Generated_Code/CLS1.c'
+' '
+'Building file: ../Generated_Code/CS1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/CS1.d" -MT"Generated_Code/CS1.o" -c -o "Generated_Code/CS1.o" "../Generated_Code/CS1.c"
+'Finished building: ../Generated_Code/CS1.c'
+' '
+'Building file: ../Generated_Code/Cpu.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/Cpu.d" -MT"Generated_Code/Cpu.o" -c -o "Generated_Code/Cpu.o" "../Generated_Code/Cpu.c"
+'Finished building: ../Generated_Code/Cpu.c'
+' '
+'Building file: ../Generated_Code/DC_DIR.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/DC_DIR.d" -MT"Generated_Code/DC_DIR.o" -c -o "Generated_Code/DC_DIR.o" "../Generated_Code/DC_DIR.c"
+'Finished building: ../Generated_Code/DC_DIR.c'
+' '
+'Building file: ../Generated_Code/DC_EN.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/DC_EN.d" -MT"Generated_Code/DC_EN.o" -c -o "Generated_Code/DC_EN.o" "../Generated_Code/DC_EN.c"
+'Finished building: ../Generated_Code/DC_EN.c'
+' '
+'Building file: ../Generated_Code/ExtIntLdd3.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/ExtIntLdd3.d" -MT"Generated_Code/ExtIntLdd3.o" -c -o "Generated_Code/ExtIntLdd3.o" "../Generated_Code/ExtIntLdd3.c"
+'Finished building: ../Generated_Code/ExtIntLdd3.c'
+' '
+'Building file: ../Generated_Code/FRTOS1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/FRTOS1.d" -MT"Generated_Code/FRTOS1.o" -c -o "Generated_Code/FRTOS1.o" "../Generated_Code/FRTOS1.c"
+'Finished building: ../Generated_Code/FRTOS1.c'
+' '
+'Building file: ../Generated_Code/LED_blue.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/LED_blue.d" -MT"Generated_Code/LED_blue.o" -c -o "Generated_Code/LED_blue.o" "../Generated_Code/LED_blue.c"
+'Finished building: ../Generated_Code/LED_blue.c'
+' '
+'Building file: ../Generated_Code/LED_green.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/LED_green.d" -MT"Generated_Code/LED_green.o" -c -o "Generated_Code/LED_green.o" "../Generated_Code/LED_green.c"
+'Finished building: ../Generated_Code/LED_green.c'
+' '
+'Building file: ../Generated_Code/LED_red.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/LED_red.d" -MT"Generated_Code/LED_red.o" -c -o "Generated_Code/LED_red.o" "../Generated_Code/LED_red.c"
+'Finished building: ../Generated_Code/LED_red.c'
+' '
+'Building file: ../Generated_Code/LEDpin1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/LEDpin1.d" -MT"Generated_Code/LEDpin1.o" -c -o "Generated_Code/LEDpin1.o" "../Generated_Code/LEDpin1.c"
+'Finished building: ../Generated_Code/LEDpin1.c'
+' '
+'Building file: ../Generated_Code/LEDpin2.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/LEDpin2.d" -MT"Generated_Code/LEDpin2.o" -c -o "Generated_Code/LEDpin2.o" "../Generated_Code/LEDpin2.c"
+'Finished building: ../Generated_Code/LEDpin2.c'
+' '
+'Building file: ../Generated_Code/LEDpin3.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/LEDpin3.d" -MT"Generated_Code/LEDpin3.o" -c -o "Generated_Code/LEDpin3.o" "../Generated_Code/LEDpin3.c"
+'Finished building: ../Generated_Code/LEDpin3.c'
+' '
+'Building file: ../Generated_Code/PE_LDD.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/PE_LDD.d" -MT"Generated_Code/PE_LDD.o" -c -o "Generated_Code/PE_LDD.o" "../Generated_Code/PE_LDD.c"
+'Finished building: ../Generated_Code/PE_LDD.c'
+' '
+'Building file: ../Generated_Code/PWM1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/PWM1.d" -MT"Generated_Code/PWM1.o" -c -o "Generated_Code/PWM1.o" "../Generated_Code/PWM1.c"
+'Finished building: ../Generated_Code/PWM1.c'
+' '
+'Building file: ../Generated_Code/PwmLdd2.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/PwmLdd2.d" -MT"Generated_Code/PwmLdd2.o" -c -o "Generated_Code/PwmLdd2.o" "../Generated_Code/PwmLdd2.c"
+'Finished building: ../Generated_Code/PwmLdd2.c'
+' '
+'Building file: ../Generated_Code/SMasterLdd1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/SMasterLdd1.d" -MT"Generated_Code/SMasterLdd1.o" -c -o "Generated_Code/SMasterLdd1.o" "../Generated_Code/SMasterLdd1.c"
+'Finished building: ../Generated_Code/SMasterLdd1.c'
+' '
+'Building file: ../Generated_Code/STP_REF.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/STP_REF.d" -MT"Generated_Code/STP_REF.o" -c -o "Generated_Code/STP_REF.o" "../Generated_Code/STP_REF.c"
+'Finished building: ../Generated_Code/STP_REF.c'
+' '
+'Building file: ../Generated_Code/Stepperspi.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/Stepperspi.d" -MT"Generated_Code/Stepperspi.o" -c -o "Generated_Code/Stepperspi.o" "../Generated_Code/Stepperspi.c"
+'Finished building: ../Generated_Code/Stepperspi.c'
+' '
+'Building file: ../Generated_Code/TU1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/TU1.d" -MT"Generated_Code/TU1.o" -c -o "Generated_Code/TU1.o" "../Generated_Code/TU1.c"
+'Finished building: ../Generated_Code/TU1.c'
+' '
+'Building file: ../Generated_Code/UTIL1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/UTIL1.d" -MT"Generated_Code/UTIL1.o" -c -o "Generated_Code/UTIL1.o" "../Generated_Code/UTIL1.c"
+'Finished building: ../Generated_Code/UTIL1.c'
+' '
+'Building file: ../Generated_Code/Vectors.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/Vectors.d" -MT"Generated_Code/Vectors.o" -c -o "Generated_Code/Vectors.o" "../Generated_Code/Vectors.c"
+'Finished building: ../Generated_Code/Vectors.c'
+' '
+'Building file: ../Generated_Code/WAIT1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/WAIT1.d" -MT"Generated_Code/WAIT1.o" -c -o "Generated_Code/WAIT1.o" "../Generated_Code/WAIT1.c"
+'Finished building: ../Generated_Code/WAIT1.c'
+' '
+'Building file: ../Generated_Code/croutine.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/croutine.d" -MT"Generated_Code/croutine.o" -c -o "Generated_Code/croutine.o" "../Generated_Code/croutine.c"
+'Finished building: ../Generated_Code/croutine.c'
+' '
+'Building file: ../Generated_Code/event_groups.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/event_groups.d" -MT"Generated_Code/event_groups.o" -c -o "Generated_Code/event_groups.o" "../Generated_Code/event_groups.c"
+'Finished building: ../Generated_Code/event_groups.c'
+' '
+'Building file: ../Generated_Code/heap_1.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/heap_1.d" -MT"Generated_Code/heap_1.o" -c -o "Generated_Code/heap_1.o" "../Generated_Code/heap_1.c"
+'Finished building: ../Generated_Code/heap_1.c'
+' '
+'Building file: ../Generated_Code/heap_2.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/heap_2.d" -MT"Generated_Code/heap_2.o" -c -o "Generated_Code/heap_2.o" "../Generated_Code/heap_2.c"
+'Finished building: ../Generated_Code/heap_2.c'
+' '
+'Building file: ../Generated_Code/heap_3.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/heap_3.d" -MT"Generated_Code/heap_3.o" -c -o "Generated_Code/heap_3.o" "../Generated_Code/heap_3.c"
+'Finished building: ../Generated_Code/heap_3.c'
+' '
+'Building file: ../Generated_Code/heap_4.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/heap_4.d" -MT"Generated_Code/heap_4.o" -c -o "Generated_Code/heap_4.o" "../Generated_Code/heap_4.c"
+'Finished building: ../Generated_Code/heap_4.c'
+' '
+'Building file: ../Generated_Code/heap_5.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/heap_5.d" -MT"Generated_Code/heap_5.o" -c -o "Generated_Code/heap_5.o" "../Generated_Code/heap_5.c"
+'Finished building: ../Generated_Code/heap_5.c'
+' '
+'Building file: ../Generated_Code/list.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/list.d" -MT"Generated_Code/list.o" -c -o "Generated_Code/list.o" "../Generated_Code/list.c"
+'Finished building: ../Generated_Code/list.c'
+' '
+'Building file: ../Generated_Code/port.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/port.d" -MT"Generated_Code/port.o" -c -o "Generated_Code/port.o" "../Generated_Code/port.c"
+'Finished building: ../Generated_Code/port.c'
+' '
+'Building file: ../Generated_Code/queue.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/queue.d" -MT"Generated_Code/queue.o" -c -o "Generated_Code/queue.o" "../Generated_Code/queue.c"
+'Finished building: ../Generated_Code/queue.c'
+' '
+'Building file: ../Generated_Code/tasks.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/tasks.d" -MT"Generated_Code/tasks.o" -c -o "Generated_Code/tasks.o" "../Generated_Code/tasks.c"
+'Finished building: ../Generated_Code/tasks.c'
+' '
+'Building file: ../Generated_Code/timers.c'
+'Invoking: Cross ARM C Compiler'
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Generated_Code/timers.d" -MT"Generated_Code/timers.o" -c -o "Generated_Code/timers.o" "../Generated_Code/timers.c"
+'Finished building: ../Generated_Code/timers.c'
+' '
+'Building target: Shell.elf'
+'Invoking: Cross ARM C++ Linker'
+arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Project_Settings/Linker_Files" -Wl,-Map,"Shell.map" -nanolibc -o "Shell.elf"  ./Sources/Stepper_driver/l6480.o  ./Sources/BLDC.o ./Sources/DC.o ./Sources/Error.o ./Sources/Events.o ./Sources/Shell.o ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AS1.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd4.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/CLS1.o ./Generated_Code/CS1.o ./Generated_Code/Cpu.o ./Generated_Code/DC_DIR.o ./Generated_Code/DC_EN.o ./Generated_Code/ExtIntLdd3.o ./Generated_Code/FRTOS1.o ./Generated_Code/LED_blue.o ./Generated_Code/LED_green.o ./Generated_Code/LED_red.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/PE_LDD.o ./Generated_Code/PWM1.o ./Generated_Code/PwmLdd2.o ./Generated_Code/SMasterLdd1.o ./Generated_Code/STP_REF.o ./Generated_Code/Stepperspi.o ./Generated_Code/TU1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/list.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o   
+'Finished building target: Shell.elf'
+' '
