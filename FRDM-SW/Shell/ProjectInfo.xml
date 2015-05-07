@@ -46,6 +46,7 @@
       <Path>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\</Path>
       <Path>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Project_Settings\Startup_Code\</Path>
       <Path>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\</Path>
+      <Path>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Stepper_driver\</Path>
     </SourceCodePaths>
   </PATHS>
   <FILES>
@@ -98,6 +99,7 @@
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Error.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Events.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Shell.c</PathName>
+      <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Stepper_driver\l6480.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\main.c</PathName>
     </GeneratedCs>
     <GeneratedHs>
@@ -155,6 +157,7 @@
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Error.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Events.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Shell.h</PathName>
+      <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Sources\Stepper_driver\l6480.h</PathName>
       <PathName>C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert\lib\Kinetis\iofiles\MKL25Z4.h</PathName>
       <PathName>C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert\lib\Kinetis\pdd\inc\ADC_PDD.h</PathName>
       <PathName>C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert\lib\Kinetis\pdd\inc\CMP_PDD.h</PathName>
