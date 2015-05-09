@@ -48,7 +48,7 @@ def getCommand(angle):
     if stepsToMove > 0:
         direction = "r "
 
-    command = "move " + direction + stepsToMove
+    command = "stepper move " + direction + str(stepsToMove)
     print (command)
     return command
 
