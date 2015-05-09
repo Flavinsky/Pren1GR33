@@ -71,3 +71,8 @@ void SHELL_Init(void)
 	}
 	set_status(STATUS_OK);
 }
+
+void shellSendDone(){
+    CLS1_SendStr((unsigned char*)"job done\r\n", CLS1_GetStdio()->stdErr);
+
+}

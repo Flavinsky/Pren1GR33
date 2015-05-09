@@ -68,7 +68,10 @@ Generated_Code/tasks.o: ../Generated_Code/tasks.c \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_REF.h \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h \
  C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h \
- C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_BSY.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h
 
 ../Generated_Code/FreeRTOS.h:
 
@@ -221,3 +224,9 @@ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLd
 C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h:
 
 C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_BSY.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h:

@@ -1,15 +1,6 @@
-18:10:17 **** Incremental Build of configuration Debug for project Shell ****
+16:25:15 **** Incremental Build of configuration Debug for project Shell ****
 make all 
-'Building file: C:/Users/Flavio/Pren/git_pren-et/stepper/driver/drv/l6480.c'
-'Invoking: Cross ARM C Compiler'
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -DPL_FRDM -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc" -I"C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/iofiles" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources" -I"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code" -std=c99 -MMD -MP -MF"Sources/Stepper_driver/l6480.d" -MT"Sources/Stepper_driver/l6480.o" -c -o "Sources/Stepper_driver/l6480.o" "C:/Users/Flavio/Pren/git_pren-et/stepper/driver/drv/l6480.c"
-'Finished building: C:/Users/Flavio/Pren/git_pren-et/stepper/driver/drv/l6480.c'
-' '
-'Building target: Shell.elf'
-'Invoking: Cross ARM C++ Linker'
-arm-none-eabi-g++ -mcpu=cortex-m0plus -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T "C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Project_Settings/Linker_Files/ProcessorExpert.ld" -Xlinker --gc-sections -L"C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Project_Settings/Linker_Files" -Wl,-Map,"Shell.map" -nanolibc -o "Shell.elf"  ./Sources/Stepper_driver/l6480.o  ./Sources/BLDC.o ./Sources/DC.o ./Sources/Error.o ./Sources/Events.o ./Sources/Shell.o ./Sources/main.o  ./Project_Settings/Startup_Code/startup.o  ./Generated_Code/AS1.o ./Generated_Code/ASerialLdd1.o ./Generated_Code/BitIoLdd1.o ./Generated_Code/BitIoLdd2.o ./Generated_Code/BitIoLdd3.o ./Generated_Code/BitIoLdd4.o ./Generated_Code/BitIoLdd6.o ./Generated_Code/CLS1.o ./Generated_Code/CS1.o ./Generated_Code/Cpu.o ./Generated_Code/DC_DIR.o ./Generated_Code/DC_EN.o ./Generated_Code/ExtIntLdd3.o ./Generated_Code/FRTOS1.o ./Generated_Code/LED_blue.o ./Generated_Code/LED_green.o ./Generated_Code/LED_red.o ./Generated_Code/LEDpin1.o ./Generated_Code/LEDpin2.o ./Generated_Code/LEDpin3.o ./Generated_Code/PE_LDD.o ./Generated_Code/PWM1.o ./Generated_Code/PwmLdd2.o ./Generated_Code/SMasterLdd1.o ./Generated_Code/STP_REF.o ./Generated_Code/Stepperspi.o ./Generated_Code/TU1.o ./Generated_Code/UTIL1.o ./Generated_Code/Vectors.o ./Generated_Code/WAIT1.o ./Generated_Code/croutine.o ./Generated_Code/event_groups.o ./Generated_Code/heap_1.o ./Generated_Code/heap_2.o ./Generated_Code/heap_3.o ./Generated_Code/heap_4.o ./Generated_Code/heap_5.o ./Generated_Code/list.o ./Generated_Code/port.o ./Generated_Code/queue.o ./Generated_Code/tasks.o ./Generated_Code/timers.o   
-'Finished building target: Shell.elf'
-' '
+make: Nothing to be done for `all'.
 
-18:10:18 Build Finished (took 1s.15ms)
+16:25:15 Build Finished (took 391ms)
 

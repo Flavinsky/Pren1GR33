@@ -28,7 +28,8 @@ Generated_Code/PE_LDD.o: ../Generated_Code/PE_LDD.c \
  ../Generated_Code/DC_DIR.h ../Generated_Code/BitIoLdd4.h \
  ../Generated_Code/DC_EN.h ../Generated_Code/BitIoLdd6.h \
  ../Generated_Code/STP_REF.h ../Generated_Code/ExtIntLdd3.h \
- C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h
+ C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h \
+ ../Generated_Code/STP_BSY.h ../Generated_Code/ExtIntLdd1.h
 
 ../Generated_Code/FreeRTOS.h:
 
@@ -133,3 +134,7 @@ C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/SPI_PDD.h:
 ../Generated_Code/ExtIntLdd3.h:
 
 C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h:
+
+../Generated_Code/STP_BSY.h:
+
+../Generated_Code/ExtIntLdd1.h:

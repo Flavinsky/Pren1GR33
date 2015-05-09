@@ -397,7 +397,7 @@ PE_DEBUGHALT();
         <Use_Co_Routines v="no" />
         <Idle_should_yield v="yes" />
         <Task_Name_Length v="12" />
-        <Minimal_Stack_Size v="40" />
+        <Minimal_Stack_Size v="150" />
         <Maximum_Priorities v="1" />
         <Maximum_Coroutine_Priorities v="1" />
         <Stackoverflow_checking_method v="Method 1" />
@@ -423,7 +423,7 @@ PE_DEBUGHALT();
       <group name="Memory">
         <Memory_Allocation_Scheme v="Scheme 2" />
         <boolgroup name="User Heap Section" v="Disabled" />
-        <Total_Heap_Size v="2048" />
+        <Total_Heap_Size v="8000" />
       </group>
       <boolgroup name="Shell" v="Enabled">
         <Shell v="CLS1" />
@@ -1020,10 +1020,7 @@ PE_DEBUGHALT();
       </boolgroup>
       <Semaphore v="no" />
       <Critical_Section v="CS1" />
-      <boolgroup name="History" v="yes">
-        <Number_of_History_Items v="4" />
-        <Stored_Characters v="64" />
-      </boolgroup>
+      <boolgroup name="History" v="no" />
     </Properties>
     <Methods>
       <PrintPrompt v="generate code" />
@@ -1774,6 +1771,67 @@ PE_DEBUGHALT();
       <Event_module_name v="Events" />
       <event name="OnInterrupt" v="generate code">
         <Event_procedure_name v="STP_REF_OnInterrupt" />
+        <Priority v="same as interrupt" />
+      </event>
+    </Events>
+  </Bean>
+  <Bean name="STP_BSY" type="ExtInt">
+    <Enabled v="Y" />
+    <Properties>
+      <Component_name v="STP_BSY" />
+      <Pin v="PTD4/LLWU_P14/SPI1_PCS0/UART2_RX/TPM0_CH4" />
+      <inhrbean type="ExtInt_LDD">
+        <Enabled v="Y" />
+        <Template v="ExtInt_LDD" />
+        <Properties>
+          <Component_name v="ExtIntLdd1" />
+          <Pin v="PTD4/LLWU_P14/SPI1_PCS0/UART2_RX/TPM0_CH4" />
+          <Generate_interrupt_on v="rising edge" />
+          <Interrupt v="INT_PORTD" />
+          <Interrupt_priority v="medium priority" />
+          <group name="Initialization">
+            <Enabled_in_init__code v="yes" />
+            <list name="Auto Initialization" v="1">
+              <Auto_initialization v="yes" />
+            </list>
+          </group>
+        </Properties>
+        <Methods>
+          <Init v="generate code" />
+          <Deinit v="don&amp;apos;t generate code" />
+          <Enable v="don&amp;apos;t generate code" />
+          <Disable v="don&amp;apos;t generate code" />
+          <GetVal v="generate code" />
+          <SetEdge v="don&amp;apos;t generate code" />
+          <SetOperationMode v="don&amp;apos;t generate code" />
+          <GetDriverState v="don&amp;apos;t generate code" />
+          <ConnectPin v="don&amp;apos;t generate code" />
+        </Methods>
+        <Events>
+          <Event_module_name v="Events" />
+          <event name="OnInterrupt" v="generate code">
+            <Event_procedure_name v="ExtIntLdd1_OnInterrupt" />
+          </event>
+        </Events>
+      </inhrbean>
+      <Generate_interrupt_on v="rising edge" />
+      <Interrupt v="INT_PORTD" />
+      <Interrupt_priority v="medium priority" />
+      <group name="Initialization">
+        <Enabled_in_init__code v="yes" />
+      </group>
+    </Properties>
+    <Methods>
+      <Enable v="don&amp;apos;t generate code" />
+      <Disable v="don&amp;apos;t generate code" />
+      <GetVal v="generate code" />
+      <SetEdge v="don&amp;apos;t generate code" />
+      <ConnectPin v="don&amp;apos;t generate code" />
+    </Methods>
+    <Events>
+      <Event_module_name v="Events" />
+      <event name="OnInterrupt" v="generate code">
+        <Event_procedure_name v="STP_BSY_OnInterrupt" />
         <Priority v="same as interrupt" />
       </event>
     </Events>

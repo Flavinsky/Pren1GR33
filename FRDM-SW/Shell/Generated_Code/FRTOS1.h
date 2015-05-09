@@ -6,7 +6,7 @@
 **     Component   : FreeRTOS
 **     Version     : Component 01.402, Driver 01.00, CPU db: 3.00.000
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-06, 10:39, # CodeGen: 1
+**     Date/Time   : 2015-05-08, 11:09, # CodeGen: 19
 **     Abstract    :
 **          This component implements the FreeRTOS Realtime Operating System
 **     Settings    :
@@ -40,7 +40,7 @@
 **            Use Co-Routines                              : no
 **            Idle should yield                            : yes
 **            Task Name Length                             : 12
-**            Minimal Stack Size                           : 40
+**            Minimal Stack Size                           : 150
 **            Maximum Priorities                           : 1
 **            Maximum Coroutine Priorities                 : 1
 **            Stackoverflow checking method                : Method 1
@@ -61,7 +61,7 @@
 **          Memory                                         : Settings for the memory and heap allocation
 **            Memory Allocation Scheme                     : Scheme 2
 **            User Heap Section                            : Disabled
-**            Total Heap Size                              : 2048
+**            Total Heap Size                              : 8000
 **          Shell                                          : Enabled
 **            Shell                                        : CLS1
 **          Utility                                        : UTIL1

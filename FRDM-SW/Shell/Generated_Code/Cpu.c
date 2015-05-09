@@ -7,7 +7,7 @@
 **     Version     : Component 01.025, Driver 01.04, CPU db: 3.00.000
 **     Datasheet   : KL25P80M48SF0RM, Rev.3, Sep 2012
 **     Compiler    : GNU C Compiler
-**     Date/Time   : 2015-05-06, 10:46, # CodeGen: 2
+**     Date/Time   : 2015-05-08, 09:29, # CodeGen: 15
 **     Abstract    :
 **
 **     Settings    :
@@ -87,6 +87,8 @@
 #include "BitIoLdd6.h"
 #include "STP_REF.h"
 #include "ExtIntLdd3.h"
+#include "STP_BSY.h"
+#include "ExtIntLdd1.h"
 #include "PE_Types.h"
 #include "PE_Error.h"
 #include "PE_Const.h"
@@ -288,6 +290,8 @@ void PE_low_level_init(void)
   /* Common initialization of the CPU registers */
   /* GPIOA_PDDR: PDD&=~0x20 */
   GPIOA_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x20));
+  /* GPIOD_PDDR: PDD&=~0x10 */
+  GPIOD_PDDR &= (uint32_t)~(uint32_t)(GPIO_PDDR_PDD(0x10));
   /* PORTA_PCR20: ISF=0,MUX=7 */
   PORTA_PCR20 = (uint32_t)((PORTA_PCR20 & (uint32_t)~(uint32_t)(
                  PORT_PCR_ISF_MASK
@@ -333,6 +337,8 @@ void PE_low_level_init(void)
   (void)BitIoLdd6_Init(NULL);
   /* ### ExtInt_LDD "ExtIntLdd3" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
   (void)ExtIntLdd3_Init(NULL);
+  /* ### ExtInt_LDD "ExtIntLdd1" component auto initialization. Auto initialization feature can be disabled by component property "Auto initialization". */
+  (void)ExtIntLdd1_Init(NULL);
 }
   /* Flash configuration field */
   __attribute__ ((section (".cfmconfig"))) const uint8_t _cfm[0x10] = {

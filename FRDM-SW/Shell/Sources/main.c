@@ -27,6 +27,7 @@
 /* MODULE main */
 
 
+
 /* Including needed modules to compile this module/procedure */
 #include "Cpu.h"
 #include "Events.h"
@@ -57,6 +58,8 @@
 #include "BitIoLdd6.h"
 #include "STP_REF.h"
 #include "ExtIntLdd3.h"
+#include "STP_BSY.h"
+#include "ExtIntLdd1.h"
 /* Including shared modules, which are used for whole project */
 #include "PE_Types.h"
 #include "PE_Error.h"
@@ -68,6 +71,8 @@
 #include "Error.h"
 #include "BLDC.h"
 #include "../../../../stepper/driver/drv/l6480.h"
+
+
 
 static void Task1(void *pvParameters)
 {

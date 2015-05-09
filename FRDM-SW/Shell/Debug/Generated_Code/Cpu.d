@@ -28,6 +28,7 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c \
  ../Generated_Code/DC_EN.h ../Generated_Code/BitIoLdd6.h \
  ../Generated_Code/STP_REF.h ../Generated_Code/ExtIntLdd3.h \
  C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h \
+ ../Generated_Code/STP_BSY.h ../Generated_Code/ExtIntLdd1.h \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources/Events.h \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/PE_Types.h \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/PE_Error.h \
@@ -59,7 +60,9 @@ Generated_Code/Cpu.o: ../Generated_Code/Cpu.c \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/DC_EN.h \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/BitIoLdd6.h \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_REF.h \
- C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_BSY.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h
 
 ../Generated_Code/FreeRTOS.h:
 
@@ -163,6 +166,10 @@ C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/SPI_PDD.h:
 
 C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h:
 
+../Generated_Code/STP_BSY.h:
+
+../Generated_Code/ExtIntLdd1.h:
+
 C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Sources/Events.h:
 
 C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/PE_Types.h:
@@ -226,3 +233,7 @@ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/BitIoLdd
 C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_REF.h:
 
 C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_BSY.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h:

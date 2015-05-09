@@ -16,6 +16,7 @@ C_SRCS += \
 ../Generated_Code/Cpu.c \
 ../Generated_Code/DC_DIR.c \
 ../Generated_Code/DC_EN.c \
+../Generated_Code/ExtIntLdd1.c \
 ../Generated_Code/ExtIntLdd3.c \
 ../Generated_Code/FRTOS1.c \
 ../Generated_Code/LED_blue.c \
@@ -28,6 +29,7 @@ C_SRCS += \
 ../Generated_Code/PWM1.c \
 ../Generated_Code/PwmLdd2.c \
 ../Generated_Code/SMasterLdd1.c \
+../Generated_Code/STP_BSY.c \
 ../Generated_Code/STP_REF.c \
 ../Generated_Code/Stepperspi.c \
 ../Generated_Code/TU1.c \
@@ -60,6 +62,7 @@ OBJS += \
 ./Generated_Code/Cpu.o \
 ./Generated_Code/DC_DIR.o \
 ./Generated_Code/DC_EN.o \
+./Generated_Code/ExtIntLdd1.o \
 ./Generated_Code/ExtIntLdd3.o \
 ./Generated_Code/FRTOS1.o \
 ./Generated_Code/LED_blue.o \
@@ -72,6 +75,7 @@ OBJS += \
 ./Generated_Code/PWM1.o \
 ./Generated_Code/PwmLdd2.o \
 ./Generated_Code/SMasterLdd1.o \
+./Generated_Code/STP_BSY.o \
 ./Generated_Code/STP_REF.o \
 ./Generated_Code/Stepperspi.o \
 ./Generated_Code/TU1.o \
@@ -104,6 +108,7 @@ C_DEPS += \
 ./Generated_Code/Cpu.d \
 ./Generated_Code/DC_DIR.d \
 ./Generated_Code/DC_EN.d \
+./Generated_Code/ExtIntLdd1.d \
 ./Generated_Code/ExtIntLdd3.d \
 ./Generated_Code/FRTOS1.d \
 ./Generated_Code/LED_blue.d \
@@ -116,6 +121,7 @@ C_DEPS += \
 ./Generated_Code/PWM1.d \
 ./Generated_Code/PwmLdd2.d \
 ./Generated_Code/SMasterLdd1.d \
+./Generated_Code/STP_BSY.d \
 ./Generated_Code/STP_REF.d \
 ./Generated_Code/Stepperspi.d \
 ./Generated_Code/TU1.d \

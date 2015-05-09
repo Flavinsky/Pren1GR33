@@ -71,6 +71,9 @@ Sources/main.o: ../Sources/main.c \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h \
  C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h \
  C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_BSY.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h \
+ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h \
  ../Sources/Shell.h ../Sources/Error.h ../Sources/BLDC.h \
  ../Sources/../../../../stepper/driver/drv/l6480.h
 
@@ -217,6 +220,12 @@ C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLd
 C:\Freescale\KDS_2.0.0\eclipse\ProcessorExpert/lib/Kinetis/pdd/inc/PORT_PDD.h:
 
 C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd3.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/STP_BSY.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h:
+
+C:/Users/Flavio/Pren/git_pren-et/Pren1GR33/FRDM-SW/Shell/Generated_Code/ExtIntLdd1.h:
 
 ../Sources/Shell.h:
 

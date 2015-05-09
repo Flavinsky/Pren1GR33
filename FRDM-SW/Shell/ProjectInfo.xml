@@ -63,6 +63,7 @@
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\Cpu.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\DC_DIR.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\DC_EN.c</PathName>
+      <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\ExtIntLdd1.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\ExtIntLdd3.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\FRTOS1.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\LED_blue.c</PathName>
@@ -75,6 +76,7 @@
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\PWM1.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\PwmLdd2.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\SMasterLdd1.c</PathName>
+      <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\STP_BSY.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\STP_REF.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\Stepperspi.c</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\TU1.c</PathName>
@@ -115,6 +117,7 @@
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\Cpu.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\DC_DIR.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\DC_EN.h</PathName>
+      <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\ExtIntLdd1.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\ExtIntLdd3.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\FRTOS1.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\FreeRTOS.h</PathName>
@@ -133,6 +136,7 @@
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\PWM1.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\PwmLdd2.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\SMasterLdd1.h</PathName>
+      <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\STP_BSY.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\STP_REF.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\StackMacros.h</PathName>
       <PathName>C:\Users\Flavio\Pren\git_pren-et\Pren1GR33\FRDM-SW\Shell\Generated_Code\Stepperspi.h</PathName>
