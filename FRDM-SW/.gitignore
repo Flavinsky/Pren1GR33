@@ -1,0 +1,19 @@
+# ignore KDS stuff
+kds_workspace
+
+**/*.g_c
+**/*.g_x
+**/*.cwGeneratedFileSetLog
+**/ProjectInfo.xml
+**/Generated_Code
+**/Documentation
+**/Static_Code
+**/Debug
+**/doxy
+**/language.settings.xml
+
+# ignore editor stuff
+*.swp
+
+BLDC/BLDC/.settings/com.processorexpert.core.ide.newprojectwizard.prefs
+BLDC/BLDC/.settings/com.freescale.processorexpert.core.prefs
