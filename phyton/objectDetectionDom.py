@@ -1,6 +1,8 @@
 __author__ = 'Dominic Schuermann'
 
-
+# from picamera.array import PiRGBArray
+# from picamera import PiCamera
+import time
 import cv2
 import numpy as np
 import sys
@@ -28,7 +30,7 @@ areaThreshFactor = config.getfloat('Threshold', 'AreaThreshFactor')
 ReferenceBinWidth = config.getfloat('Bin', 'ReferenceBinWidth')
 
 # Read image and parameters
-img = cv2.imread('middle.jpg')
+img = cv2.imread('images/newRight.jpg')
 height, width, depth = img.shape
 
 # calculate analyzed area
@@ -41,22 +43,27 @@ binMinArea = analyzedHeight * ReferenceBinWidth * areaThreshFactor
 contourMinArea = analyzedHeight * ReferenceBinWidth * contourMinThreshFactor
 contourMaxArea = analyzedHeight * ReferenceBinWidth
 
-# Centroids
-pictureCentroidX = 0
-pictureCentroidY = 0
-contourCentroidX = 0
-contourCentroidY = 0
-differenceCentroidX = 0
-
-
 def getDistanceToBin():
 
     print("----------------------------------------------------------------------")
     print("imageDetection - getDistanceToBin started")
 
+    # # initialize the camera and grab a reference to the raw camera capture
+    # camera = PiCamera()
+    # camera.resolution = (2592, 1944)
+    # rawCapture = PiRGBArray(camera, size=(2592, 1944))
+    #
+    # # allow the camera to warmup
+    # time.sleep(0.1)
+    #
+    # # grab an image from the camera
+    # camera.capture(rawCapture, format="bgr")
+    # img = rawCapture.array
 
     processingImage = img[borderY:borderY + analyzedHeight, borderX:borderX + analyzedWidth]
+    cv2.imwrite("processingImg.jpg", processingImage)
     referenceImage = processingImage.copy()
+    processImgDebug = processingImage.copy()
 
     # convert to greyscale
     processingGrey = cv2.cvtColor(processingImage, cv2.COLOR_BGR2GRAY)
@@ -80,11 +87,19 @@ def getDistanceToBin():
     # evaluate full picture centroid
     referenceContours, fullHierarchy = cv2.findContours(referenceBinary, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
 
+    #init useable variables
+    pictureCentroidX = 0
+    pictureCentroidY = 0
+    contourCentroidX = 0
+    contourCentroidY = 0
+    differenceCentroidX = 0
+
     for cnt in referenceContours:
 
         # get centroid of whole picture, base reference for angle correction
         fullMoments = cv2.moments(cnt)
         pictureCentroidX = int(fullMoments['m10']/fullMoments['m00'])
+        pictureCentroidY = int(fullMoments['m01']/fullMoments['m00'])
 
     # evaluate contours on picture -> find bin
     contours2, hierarchy2 = cv2.findContours(filteredBinaryImage2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)
@@ -92,16 +107,20 @@ def getDistanceToBin():
     for cnt in contours2:
         contourArea = cv2.contourArea(cnt)
 
-        print("contourArea", contourArea)
-        print("contourMinArea", contourMinArea)
-        print("contourMaxArea", contourMaxArea)
+        # print("contourArea", contourArea)
+        # print("contourMinArea", contourMinArea)
+        # print("contourMaxArea", contourMaxArea)
+        
         if contourMinArea < contourArea < contourMaxArea:
 
-            # find and draw endpoints of contour
+            #draw contour for debug
+            cv2.drawContours(processImgDebug,cnt,-1,(0,255,0),3)
+
+            # find and draw endpoints of contour for debug
             hull = cv2.convexHull(cnt)
             for points in hull:
                 point = points[0]
-                cv2.circle(processingImage, (point[0], point[1]), 5, (0, 0, 255))
+                cv2.circle(processImgDebug, (point[0], point[1]), 5, (0, 0, 255))
 
             # check if bin is fully seen in picture. if not, do special centroid calculation with reference size
             if contourArea < binMinArea:
@@ -123,6 +142,9 @@ def getDistanceToBin():
                 contourMoments = cv2.moments(cnt)
                 contourCentroidX = int(contourMoments['m10']/contourMoments['m00'])
 
+                # for debugging
+                contourCentroidY = int(contourMoments['m01']/contourMoments['m00'])
+
                 print("contAbsCentX", contourCentroidX)
 
             else:
@@ -131,13 +153,16 @@ def getDistanceToBin():
                 print("----> normal shape <----")
                 contourMoments = cv2.moments(cnt)
                 centroidX = int(contourMoments['m10']/contourMoments['m00'])
-             #   print(centroidX)
+
+                # for debugging
+                contourCentroidY = int(contourMoments['m01']/contourMoments['m00'])
+
                 contourCentroidX = centroidX
                 differenceCentroidX = 0
 
     #calculate difference to picture centroid
-    if not (pictureCentroidX is None):
-        if not (contourCentroidX is None):
+    if not (pictureCentroidX is 0):
+        if not (contourCentroidX is 0):
             distanceToCentroid = pictureCentroidX - contourCentroidX
 
             # draw line for debugging
@@ -148,12 +173,29 @@ def getDistanceToBin():
                 if distanceToCentroid < 0:
                     distanceToCentroid -= differenceCentroidX
 
+                    #debug
+                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(int(contourCentroidX + differenceCentroidX) ,contourCentroidY),(0,255,0),2)
+                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(contourCentroidX ,contourCentroidY),(255,0,0),5)
+
                 elif distanceToCentroid >= 0:
                     distanceToCentroid += differenceCentroidX
 
+                    #debug
+                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(int(contourCentroidX - differenceCentroidX) ,contourCentroidY),(0,255,0),2)
+                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(contourCentroidX ,contourCentroidY),(255,0,0),5)
+
             print("px middle to cont corrected", distanceToCentroid)
 
+            #debug
+            cv2.imwrite("processingImgContour.jpg", processImgDebug)
+
             return distanceToCentroid
+        else:
+            print("contourCentroidX not defined - No processable contour found!")
+            return 0
+    else:
+        print("pictureCentroidX not defined - No processable picture found!")
+        return 0
 
 if __name__ == '__main__':
     print("----------------------------------------------------------------------")
