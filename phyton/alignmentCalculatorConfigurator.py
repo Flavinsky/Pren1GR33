@@ -2,42 +2,30 @@ __author__ = 'orceN'
 
 import sys
 import ConfigParser
+import argparse
 
-config = ConfigParser.RawConfigParser()
-config.read('alignmentCalculatorDefinitions.cfg')
+parser = ConfigParser.SafeConfigParser()
+parser.read('alignmentCalculatorDefinitions.cfg')
 
-def setDefinition(definitionGroup, definitionName, definitionValue):
+argsparser = argparse.ArgumentParser(description='Configurator for alignmentCalculator definitions')
+argsparser.add_argument('-g', '--get', nargs=2, action='store', metavar=('definitionGroup', 'definitionName'),
+                   help='get the definition for defined definitionGroup and definitionName')
+argsparser.add_argument('-s', '--set', nargs=3, action='store', metavar=('definitionGroup', 'definitionName', 'definitionValue'),
+                   help='set the definition for defined definitionGroup and definitionName with defined definitionValue')
 
-    try:
-        config.set(definitionGroup, definitionName, definitionValue)
-        with open('alignmentCalculatorDefinitions.cfg', 'w') as alignmentDef:
-            config.write(alignmentDef)
-    except:
-         print("write configfile for alignmentCalculator failed")
-         return None
+args = argsparser.parse_args()
 
-def getDefinition(definitionGroup, definitionName):
+if not(args.get is None) and not(args.set is None):
+    sys.exit("can't execute get and set command in combination")
 
-    try:
-        definitionValue = config.get(definitionGroup, definitionName)
-        return definitionValue
-    except:
-        print("read configfile for alignmentCalculator failed")
-        return None
+elif(args.get is not None):
+    definitionGroup, definitionName = args.get
+    definitionValue = parser.get(definitionGroup, definitionName)
+    sys.exit(definitionValue)
 
-if __name__ == '__main__':
-
-    operationType = sys.argv[1]
-    definitionGroup = sys.argv[2]
-    definitionName = sys.argv[3]
-    if(len(sys.argv) == 3):
-        definitionValue = sys.argv[4]
-
-    if(operationType == 'get'):
-        sys.exit(getDefinition(definitionGroup, definitionName))
-    elif (operationType == 'set'):
-        sys.exit(setDefinition(definitionGroup, definitionName, definitionValue))
-    else:
-        print("invalid input")
-        sys.exit(None)
+elif(args.set is not None):
+    definitionGroup, definitionName, definitionValue = args.set
+    parser.set(definitionGroup, definitionName, definitionValue)
+    with open('alignmentCalculatorDefinitions.cfg', 'w') as alignmentDef:
+        parser.write(alignmentDef)
 
