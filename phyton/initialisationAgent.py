@@ -4,6 +4,8 @@ import serial
 import sys
 from time import sleep
 
+rpmBLCD = 4500
+
 def openSerialConnection():
     print("----------------------------------------------------------------------")
     print("Initialisation - initialize serial connection")
@@ -18,7 +20,6 @@ def openSerialConnection():
         print("connection failed")
         print("exiting...")
         sys.exit()
-
 
 if __name__ == '__main__':
     print("======================================================================")
@@ -50,4 +51,12 @@ if __name__ == '__main__':
 
     print("----------------------------------------------------------------------")
     print("Initialisation done")
+    print("----------------------------------------------------------------------")
+    print("Start up BLDC")
+
+    serialConnection.write(b'BLDC on\r')
+    sleep(0.5)
+    serialConnection.write(b'BLDC setrpm ' + str(rpmBLCD) + '\r')
+    sleep(5)
+
     print("======================================================================")

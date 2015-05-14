@@ -3,8 +3,8 @@ __author__ = 'Dominic Schuermann'
 import alignmentCalculator
 import objectDetectionDom
 import serial
-
-rpmBLCD = 8000
+import sys
+from time import sleep
 
 def openSerialConnection():
     print("----------------------------------------------------------------------")
@@ -25,50 +25,47 @@ if __name__ == '__main__':
     print("======================================================================")
     print("Agent - started")
 
-    distanceToBin = objectDetectionDom.getDistanceToBin()
-
-    calculatedAngle = alignmentCalculator.calculateAngle(distanceToBin)
-    stepperCommand = alignmentCalculator.getCommand(calculatedAngle)
-
     out = ''
     serialConnection = openSerialConnection()
 
-    print("----------------------------------------------------------------------")
-    print("Agent - start BLDC")
-    # startup BLDC
-    serialConnection.write(b'BLDC on\r')
-    sleep(0.5)
-
-    serialConnection.write(b'BLDC setrpm' + rpmBLCD + '\r')
-    sleep(0.5)
-
-    while serialConnection.inWaiting() > 0:
-        out + serialConnection.read(1)
-        if out != '':
-            print ">>" + out
+    distanceToBin = objectDetectionDom.getDistanceToBin()
+    calculatedAngle = alignmentCalculator.calculateAngle(distanceToBin)
+    stepperCommand = alignmentCalculator.getCommand(calculatedAngle)
 
     print("----------------------------------------------------------------------")
     print("Agent - align for shooting")
-    # align robot to bin
-    serialConnection.write(stepperCommand)
+
+    serialConnection.write(b'' + stepperCommand)
+    sleep(0.5)
+    serialConnection.write(b'\r')
+    sleep(0.5)
 
     while serialConnection.inWaiting() > 0:
         out + serialConnection.read(1)
-        if out != '':
-            print ">>" + out
-        if out == 'job done':
-            break
+    if out != '':
+        print ">>" + out
 
     print("----------------------------------------------------------------------")
     print("Agent - shoot!")
     # shoot!
     serialConnection.write(b'DC up\r')
     sleep(0.5)
-    serialConnection.write(b'DC on')
+    serialConnection.write(b'DC on\r')
     sleep(0.5)
 
     # sleep while shooting
-    sleep(15)
+    sleep(8)
+
+    print("----------------------------------------------------------------------")
+    print("Agent - shutdown")
+
+    serialConnection.write(b'DC off\r')
+    sleep(0.5)
+    serialConnection.write(b'BLDC off\r')
+    sleep(0.5)
+    serialConnection.write(b'stepper home go\r')
+    sleep(0.5)
+
     print("----------------------------------------------------------------------")
     print("Agent - job done!")
     print("======================================================================")
