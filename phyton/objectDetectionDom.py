@@ -7,10 +7,20 @@ import cv2
 import numpy as np
 import sys
 import ConfigParser
+import argparse
 
 # define config parser
 config = ConfigParser.RawConfigParser()
 config.read('objectDetectionDefinition.cfg')
+
+# define argsparser
+argsparser = argparse.ArgumentParser(description='object detection logic')
+argsparser.add_argument('-n', '--normal', dest='debugmode', action='store_false',
+                        help='logic will be executed in normal mode')
+argsparser.add_argument('-d', '--debug', dest='debugmode', action='store_true',
+                        help='logic will be executed in debug mode')
+argsparser.set_defaults(debugmode=False)
+args = argsparser.parse_args()
 
 # define threshold
 binaryThreshValue = config.getfloat('Threshold', 'BinaryThreshValue')
@@ -29,21 +39,7 @@ areaThreshFactor = config.getfloat('Threshold', 'AreaThreshFactor')
 # Bin reference size in px
 ReferenceBinWidth = config.getfloat('Bin', 'ReferenceBinWidth')
 
-# Read image and parameters
-img = cv2.imread('images/newRight.jpg')
-height, width, depth = img.shape
-
-# calculate analyzed area
-borderX = paddingSideFactor * width
-borderY = paddingTopFactor * height
-analyzedWidth = width - 2 * borderX
-analyzedHeight = height * analysedAreaHeightFactor
-binMinArea = analyzedHeight * ReferenceBinWidth * areaThreshFactor
-
-contourMinArea = analyzedHeight * ReferenceBinWidth * contourMinThreshFactor
-contourMaxArea = analyzedHeight * ReferenceBinWidth
-
-def getDistanceToBin():
+def getDistanceToBin(debugmode):
 
     print("----------------------------------------------------------------------")
     print("imageDetection - getDistanceToBin started")
@@ -60,8 +56,25 @@ def getDistanceToBin():
     # camera.capture(rawCapture, format="bgr")
     # img = rawCapture.array
 
+    img = cv2.imread('images/newRight.jpg')
+
+    # Read parameters
+    height, width, depth = img.shape
+
+    # calculate analyzed area
+    borderX = paddingSideFactor * width
+    borderY = paddingTopFactor * height
+    analyzedWidth = width - 2 * borderX
+    analyzedHeight = height * analysedAreaHeightFactor
+    binMinArea = analyzedHeight * ReferenceBinWidth * areaThreshFactor
+
+    contourMinArea = analyzedHeight * ReferenceBinWidth * contourMinThreshFactor
+    contourMaxArea = analyzedHeight * ReferenceBinWidth
+
     processingImage = img[borderY:borderY + analyzedHeight, borderX:borderX + analyzedWidth]
-    cv2.imwrite("processingImg.jpg", processingImage)
+    if(debugmode):
+        cv2.imwrite("processing.jpg", processingImage)
+
     referenceImage = processingImage.copy()
     processImgDebug = processingImage.copy()
 
@@ -76,6 +89,8 @@ def getDistanceToBin():
 
     # create binary picture
     ret, binaryImage = cv2.threshold(processingGreyInvCopy, binaryThreshValue, binaryThreshMax, cv2.THRESH_BINARY)
+    if(debugmode):
+        cv2.imwrite("binary.jpg", binaryImage)
 
     ret, referenceBinary = cv2.threshold(referenceGreyInv, 0, 255, cv2.THRESH_BINARY)
 
@@ -106,10 +121,6 @@ def getDistanceToBin():
 
     for cnt in contours2:
         contourArea = cv2.contourArea(cnt)
-
-        # print("contourArea", contourArea)
-        # print("contourMinArea", contourMinArea)
-        # print("contourMaxArea", contourMaxArea)
         
         if contourMinArea < contourArea < contourMaxArea:
 
@@ -173,21 +184,20 @@ def getDistanceToBin():
                 if distanceToCentroid < 0:
                     distanceToCentroid -= differenceCentroidX
 
-                    #debug
-                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(int(contourCentroidX + differenceCentroidX) ,contourCentroidY),(0,255,0),2)
-                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(contourCentroidX ,contourCentroidY),(255,0,0),5)
+                    if(debugmode):
+                        cv2.line(processImgDebug, (pictureCentroidX, pictureCentroidY), (int(contourCentroidX + differenceCentroidX), contourCentroidY), (0, 255, 0), 2)
+                        cv2.line(processImgDebug, (pictureCentroidX, pictureCentroidY), (contourCentroidX, contourCentroidY),(255, 0, 0), 5)
 
                 elif distanceToCentroid >= 0:
                     distanceToCentroid += differenceCentroidX
 
-                    #debug
-                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(int(contourCentroidX - differenceCentroidX) ,contourCentroidY),(0,255,0),2)
-                    cv2.line(processImgDebug,(pictureCentroidX,pictureCentroidY),(contourCentroidX ,contourCentroidY),(255,0,0),5)
+                    if(debugmode):
+                        cv2.line(processImgDebug, (pictureCentroidX, pictureCentroidY), (int(contourCentroidX - differenceCentroidX), contourCentroidY), (0, 255, 0), 2)
+                        cv2.line(processImgDebug, (pictureCentroidX, pictureCentroidY), (contourCentroidX, contourCentroidY),(255, 0, 0), 5)
 
             print("px middle to cont corrected", distanceToCentroid)
 
-            #debug
-            cv2.imwrite("processingImgContour.jpg", processImgDebug)
+            cv2.imwrite("contours.jpg", processImgDebug)
 
             return distanceToCentroid
         else:
@@ -199,5 +209,8 @@ def getDistanceToBin():
 
 if __name__ == '__main__':
     print("----------------------------------------------------------------------")
-    print("image detection started")
-    sys.exit(getDistanceToBin())
+    if(args.debugmode):
+        print("image detection started - DEBUG")
+    else:
+        print("image detection started")
+    sys.exit(getDistanceToBin(args.debug))
