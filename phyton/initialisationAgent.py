@@ -42,12 +42,7 @@ if __name__ == '__main__':
     print ("initialize BLDC")
 
     serialConnection.write(b'BLDC init\r')
-    sleep(2)
-
-    while serialConnection.inWaiting() > 0:
-        out + serialConnection.read(1)
-    if out != '':
-        print ">>" + out
+    sleep(4)
 
     print("----------------------------------------------------------------------")
     print("Initialisation done")
@@ -57,6 +52,11 @@ if __name__ == '__main__':
     serialConnection.write(b'BLDC on\r')
     sleep(0.5)
     serialConnection.write(b'BLDC setrpm ' + str(rpmBLCD) + '\r')
-    sleep(5)
+    sleep(0.5)
+
+    while serialConnection.inWaiting() > 0:
+        out + serialConnection.read(1)
+    if out != '':
+        print ">>" + out
 
     print("======================================================================")
