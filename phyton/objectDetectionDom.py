@@ -213,4 +213,4 @@ if __name__ == '__main__':
         print("image detection started - DEBUG")
     else:
         print("image detection started")
-    sys.exit(getDistanceToBin(args.debug))
+    sys.exit(getDistanceToBin(args.debugmode))
