@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.ini4j.Ini;
+import org.ini4j.Profile.Section;
 
 public class Manager extends HttpServlet
 {
@@ -37,34 +38,6 @@ public class Manager extends HttpServlet
 	if(request.getParameter("action")!="" && request.getParameter("action")!=null){
             action = new String(request.getParameter("action").getBytes("iso-8859-1"), "iso-8859-1");
 	}
-
-        if(action.equals("configfilelist"))
-        {
-            List<String> textFiles = new ArrayList<String>();
-            File folder = new File(getServletContext().getRealPath("/")+"python");
-                File[] listOfFiles = folder.listFiles();
-
-                for (int i = 0; i < listOfFiles.length; i++) {
-                  if (listOfFiles[i].isFile()) {
-                    //System.out.println("File " + listOfFiles[i].getName());
-                      if (listOfFiles[i].getName().endsWith((".cfg"))) {
-                          textFiles.add(listOfFiles[i].getName());
-                      }
-                  } else if (listOfFiles[i].isDirectory()) {
-                    //System.out.println("Directory " + listOfFiles[i].getName());
-                  }
-                }
-         
-                /*List<String> textFiles = new ArrayList<String>();
-                File dir = new File(getServletContext().getRealPath("/")+"python");
-                for (File file : dir.listFiles()) {
-                  if (file.getName().endsWith((".cfg"))) {
-                    textFiles.add(file.getName());
-                  }
-                }*/
-                System.out.println(textFiles.toString());
-                out.println(textFiles);
-        }
         
         if(action.equals("configfilelist"))
         {
@@ -77,7 +50,19 @@ public class Manager extends HttpServlet
                 }
                 out.println(textFiles.toString());
         }
-        
+ 
+        else if(action.equals("pythonfilelist"))
+        {
+                List<String> textFiles = new ArrayList<String>();
+                File dir = new File(getServletContext().getRealPath("/")+"python");
+                for (File file : dir.listFiles()) {
+                  if (file.getName().endsWith((".py"))) {
+                    textFiles.add(file.getName());
+                  }
+                }
+                out.println(textFiles.toString());
+        }
+ 
         out.flush();
     }
 
@@ -94,13 +79,6 @@ public class Manager extends HttpServlet
 	if(request.getParameter("action")!="" && request.getParameter("action")!=null){
             action = new String(request.getParameter("action").getBytes("iso-8859-1"), "iso-8859-1");
 	}
-        
-
-        /*String sortname="";
-        if(request.getParameter("sortname")!="" && request.getParameter("sortname")!=null){
-            sortname = new String(request.getParameter("sortname").getBytes("iso-8859-1"), "UTF-8");
-            if(sortname == null || sortname == ""){sortname="id";}
-        }*/
         
         if(action.equals("configsectionlist"))
         {
@@ -124,10 +102,122 @@ public class Manager extends HttpServlet
             out.println(sections);
         }
         
-        if(action.equals("test"))
+        else if(action.equals("configlist"))
         {
             // Get params
-            int number1 = 1;
+            String configfile="";
+            if(request.getParameter("configfile")!="" && request.getParameter("configfile")!=null){
+                configfile = new String(request.getParameter("configfile").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+            
+            String configsection="";
+            if(request.getParameter("configsection")!="" && request.getParameter("configsection")!=null){
+                configsection = new String(request.getParameter("configsection").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+
+            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python/"+configfile));
+            
+            ArrayList<String> tmpkeys = new ArrayList<String>();
+            String keys = "";
+            for (String sectionName: ini.keySet()) {
+                Section section = ini.get(sectionName);
+                if(sectionName.equals(configsection))
+                {
+                    for (String optionKey: section.keySet()) {
+                        tmpkeys.add(optionKey);
+                    }
+                }
+            }
+
+            keys = String.join(",", tmpkeys);
+            
+            out.println(keys);
+        }
+        
+        else if(action.equals("configvalue"))
+        {
+            // Get params
+            String configfile="";
+            if(request.getParameter("configfile")!="" && request.getParameter("configfile")!=null){
+                configfile = new String(request.getParameter("configfile").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+            
+            String configsection="";
+            if(request.getParameter("configsection")!="" && request.getParameter("configsection")!=null){
+                configsection = new String(request.getParameter("configsection").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+            
+            String configkey="";
+            if(request.getParameter("configkey")!="" && request.getParameter("configkey")!=null){
+                configkey = new String(request.getParameter("configkey").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+
+            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python/"+configfile));
+            
+            String keyvalue = "";
+            for (String sectionName: ini.keySet()) {
+                Section section = ini.get(sectionName);
+                if(sectionName.equals(configsection))
+                {
+                    for (String optionKey: section.keySet()) {
+                        if(optionKey.equals(configkey))
+                        {
+                            keyvalue=section.get(optionKey);
+                        }
+                    }
+                }
+            }
+
+            out.println(keyvalue);
+        }
+        
+        else if(action.equals("setconfigvalue"))
+        {
+            // Get params
+            String configfile="";
+            if(request.getParameter("configfile")!="" && request.getParameter("configfile")!=null){
+                configfile = new String(request.getParameter("configfile").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+            
+            String configsection="";
+            if(request.getParameter("configsection")!="" && request.getParameter("configsection")!=null){
+                configsection = new String(request.getParameter("configsection").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+            
+            String configkey="";
+            if(request.getParameter("configkey")!="" && request.getParameter("configkey")!=null){
+                configkey = new String(request.getParameter("configkey").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+            
+            String newconfigvalue="";
+            if(request.getParameter("newconfigvalue")!="" && request.getParameter("newconfigvalue")!=null){
+                newconfigvalue = new String(request.getParameter("newconfigvalue").getBytes("iso-8859-1"), "iso-8859-1");
+            }
+
+            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python/"+configfile));
+            
+            String keyvalue = "";
+            for (String sectionName: ini.keySet()) {
+                Section section = ini.get(sectionName);
+                if(sectionName.equals(configsection))
+                {
+                    for (String optionKey: section.keySet()) {
+                        if(optionKey.equals(configkey))
+                        {
+                            ini.put(configsection, configkey, newconfigvalue);
+                        }
+                    }
+                }
+            }
+            ini.store();
+            
+            out.println(newconfigvalue);
+        }
+        
+        if(action.equals("run"))
+        {
+            // Get params
+            /*int number1 = 1;
             if(request.getParameter("number1")!="" && request.getParameter("number1")!=null){
                 String tmp_number1 = new String(request.getParameter("number1").getBytes("iso-8859-1"), "UTF-8");
                 if(StringUtils.isNumericSpace(tmp_number1) && tmp_number1!="0"){ number1=Integer.parseInt(tmp_number1); }
@@ -136,10 +226,11 @@ public class Manager extends HttpServlet
             if(request.getParameter("number2")!="" && request.getParameter("number2")!=null){
                 String tmp_number2 = new String(request.getParameter("number2").getBytes("iso-8859-1"), "UTF-8");
                 if(StringUtils.isNumericSpace(tmp_number2) && tmp_number2!="0"){ number2=Integer.parseInt(tmp_number2); }
-            }
+            }*/
 
             try{
-                out.println(startPythonScript(getServletContext().getRealPath("/")+"python/test.py", number1, number2));
+                //out.println(startPythonScript(getServletContext().getRealPath("/")+"python/test.py", number1, number2));
+                out.println(startPythonScript(getServletContext().getRealPath("/")+"python/test.py"));
             }
             catch(Exception e){
                 StringWriter errors = new StringWriter();
@@ -151,10 +242,10 @@ public class Manager extends HttpServlet
         out.flush();
     }
    
-   public int startPythonScript(String pythonPath, int param1, int param2) throws IOException
+   public String startPythonScript(String pythonPath) throws IOException
    {
          //ProcessBuilder pb = new ProcessBuilder("sudo","python",pythonPath,""+param1,""+param2);
-         ProcessBuilder pb = new ProcessBuilder("python",pythonPath,""+param1,""+param2);
+         ProcessBuilder pb = new ProcessBuilder("python",pythonPath);
          pb.redirectErrorStream(true);
          Process p = pb.start();
 
@@ -167,6 +258,6 @@ public class Manager extends HttpServlet
          }
          reader.close();
 
-         return parseInt(ret.trim());
+         return ret.trim();
     }
 }

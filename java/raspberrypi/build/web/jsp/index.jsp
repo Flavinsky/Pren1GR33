@@ -20,9 +20,9 @@
             {
                 var jqXHR;
                 $( "#accordion" ).accordion();
-                $("#output").css("color","black");
-                $("#output").css("font-size","16px");
-                $("#output").html("SYSTEM READY");
+                $("#systemstatus").css("color","black");
+                $("#systemstatus").css("font-size","16px");
+                $("#systemstatus").html("SYSTEM READY");
                 var audioElement = document.createElement('audio');
                 audioElement.setAttribute('src', '<%=request.getContextPath() %>/mp3/Power Up SYSTEM Ready.mp3');
                 audioElement.setAttribute('autoplay', 'autoplay');
@@ -31,6 +31,27 @@
                 audioElement.play();
                 }, true);
                 audioElement.play();
+                $('#pythonfilelist').empty();
+                jqXHR = $.ajax(
+                {
+                        type: "GET",
+                        contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                        dataType: "text",
+                        url: "<%=request.getContextPath() %>/Manager?action=pythonfilelist"
+                        //beforeSend: function() { $('.ajax').show(); }
+                }).done(function(msg) 
+                {
+                    var files = msg.split('\n');
+                    files = files[0].split(',');
+                    for(var i = 0; i < files.length; i++)
+                    {
+                        $('#pythonfilelist').append($('<option>', {
+                            value: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
+                            text: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                        }));
+                    }
+                });
+                $('#configfilelist').empty();
                 jqXHR = $.ajax(
                 {
                         type: "GET",
@@ -40,19 +61,70 @@
                         //beforeSend: function() { $('.ajax').show(); }
                 }).done(function(msg) 
                 {
-                    alert("all: "+msg);
                     var files = msg.split('\n');
-                    for(var i = 0; i < files.length - 1; i++)
+                    files = files[0].split(',');
+                    for(var i = 0; i < files.length; i++)
                     {
-                        alert("file: "+files[i].replaceAll(']','').replaceAll('[',''));
                         $('#configfilelist').append($('<option>', {
-                            value: files[i].replaceAll(']','').replaceAll('[',''),
-                            text: files[i].replaceAll(']','').replaceAll('[','')
+                            value: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
+                            text: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
                         }));
                     }
+                    $('#configsectionlist').empty();
+                    jqXHR = $.ajax(
+                    {
+                            type: "POST",
+                            contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                            dataType: "text",
+                            data: { configfile: $("#configfilelist option:selected").text() },
+                            url: "<%=request.getContextPath() %>/Manager?action=configsectionlist"
+                            //beforeSend: function() { $('.ajax').show(); }
+                    }).done(function(msg) 
+                    {
+                        var sections = msg.split(',');
+                        for(var i = 0; i < sections.length; i++)
+                        {
+                            $('#configsectionlist').append($('<option>', {
+                                value: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
+                                text: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                            }));
+                        }
+                        $('#configlist').empty();
+                        jqXHR = $.ajax(
+                        {
+                                type: "POST",
+                                contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                                dataType: "text",
+                                data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text() },
+                                url: "<%=request.getContextPath() %>/Manager?action=configlist"
+                                //beforeSend: function() { $('.ajax').show(); }
+                        }).done(function(msg) 
+                        {
+                            var configs = msg.split(',');
+                            for(var i = 0; i < configs.length; i++)
+                            {
+                                $('#configlist').append($('<option>', {
+                                    value: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
+                                    text: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                                }));
+                            }
+                            jqXHR = $.ajax(
+                            {
+                                    type: "POST",
+                                    contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                                    dataType: "text",
+                                    data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text(), configkey: $("#configlist option:selected").text() },
+                                    url: "<%=request.getContextPath() %>/Manager?action=configvalue"
+                                    //beforeSend: function() { $('.ajax').show(); }
+                            }).done(function(msg) 
+                            {
+                                $("#keyvalue").val(msg);
+                            });
+                        });
+                    });
                 });
                 $('#configfilelist').change(function() {
-                    $('#configsectionlist').empty();
+                   $('#configsectionlist').empty();
                    jqXHR = $.ajax(
                    {
                            type: "POST",
@@ -67,33 +139,131 @@
                        for(var i = 0; i < sections.length; i++)
                        {
                            $('#configsectionlist').append($('<option>', {
-                               value: sections[i].replaceAll(']','').replaceAll('[',''),
-                               text: sections[i].replaceAll(']','').replaceAll('[','')
+                               value: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
+                               text: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
                            }));
                        }
+                        jqXHR = $.ajax(
+                        {
+                                type: "POST",
+                                contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                                dataType: "text",
+                                data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text(), configkey: $("#configlist option:selected").text() },
+                                url: "<%=request.getContextPath() %>/Manager?action=configvalue"
+                                //beforeSend: function() { $('.ajax').show(); }
+                        }).done(function(msg) 
+                        {
+                            $("#keyvalue").val(msg);
+                        });
                    });
                 });
-                $( "input[type=submit], a, button" )
+                $('#configsectionlist').change(function() {
+                   $('#configlist').empty();
+                   jqXHR = $.ajax(
+                   {
+                           type: "POST",
+                           contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                           dataType: "text",
+                           data: { configfile: $("#configfilelist option:selected").text(), configsection: $(this).val() },
+                           url: "<%=request.getContextPath() %>/Manager?action=configlist"
+                           //beforeSend: function() { $('.ajax').show(); }
+                   }).done(function(msg) 
+                   {
+                       var configs = msg.split(',');
+                       for(var i = 0; i < configs.length; i++)
+                       {
+                           $('#configlist').append($('<option>', {
+                               value: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
+                               text: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                           }));
+                       }
+                        jqXHR = $.ajax(
+                        {
+                                type: "POST",
+                                contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                                dataType: "text",
+                                data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text(), configkey: $("#configlist option:selected").text() },
+                                url: "<%=request.getContextPath() %>/Manager?action=configvalue"
+                                //beforeSend: function() { $('.ajax').show(); }
+                        }).done(function(msg) 
+                        {
+                            $("#keyvalue").val(msg);
+                        });
+                   });
+                });
+                $('#configlist').change(function() {
+                   jqXHR = $.ajax(
+                   {
+                           type: "POST",
+                           contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                           dataType: "text",
+                           data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text(), configkey: $(this).val() },
+                           url: "<%=request.getContextPath() %>/Manager?action=configvalue"
+                           //beforeSend: function() { $('.ajax').show(); }
+                   }).done(function(msg) 
+                   {
+                       $("#keyvalue").val(msg);
+                   });
+                });
+                
+                $( "#setvalue" ).click(function() 
+                {
+                   jqXHR = $.ajax(
+                   {
+                           type: "POST",
+                           contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                           dataType: "text",
+                           data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text(), configkey: $("#configlist option:selected").text(), newconfigvalue: $("#keyvalue").val() },
+                           url: "<%=request.getContextPath() %>/Manager?action=setconfigvalue"
+                           //beforeSend: function() { $('.ajax').show(); }
+                   }).done(function(msg) 
+                   {
+                       $("#keyvalue").val(msg);
+                   });
+                });
+                
+                $("input[type=submit], a, button")
                     .button()
                     .click(function( event ) {
                       event.preventDefault();
                 });
-                $( "#start" ).click(function() 
+                
+                $("#run").click(function() 
                 {
-                    var number1 = $("#number1").attr('value');
-                    var number2 = $("#number2").attr('value');
                     audioElement.pause();
                     jqXHR = $.ajax(
                     {
                             type: "POST",
                             contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
                             dataType: "text",
-                            data: { number1: number1, number2: number2 },
-                            url: "<%=request.getContextPath() %>/Manager?action=test"
+                            data: { pythonfile: $("#pythonfilelist option:selected").text() },
+                            url: "<%=request.getContextPath() %>/Manager?action=run"
                             //beforeSend: function() { $('.ajax').show(); }
                     }).done(function(msg) 
                     {
-                        if(msg==1337)
+                        var objToday = new Date(),
+                                        weekday = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'),
+                                        dayOfWeek = weekday[objToday.getDay()],
+                                        domEnder = new Array( 'th', 'st', 'nd', 'rd', 'th', 'th', 'th', 'th', 'th', 'th' ),
+                                        dayOfMonth = today + (objToday.getDate() < 10) ? '0' + objToday.getDate() + domEnder[objToday.getDate()] : objToday.getDate() + domEnder[parseFloat(("" + objToday.getDate()).substr(("" + objToday.getDate()).length - 1))],
+                                        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'),
+                                        curMonth = months[objToday.getMonth()],
+                                        curYear = objToday.getFullYear(),
+                                        curHour = objToday.getHours() > 12 ? objToday.getHours() - 12 : (objToday.getHours() < 10 ? "0" + objToday.getHours() : objToday.getHours()),
+                                        curMinute = objToday.getMinutes() < 10 ? "0" + objToday.getMinutes() : objToday.getMinutes(),
+                                        curSeconds = objToday.getSeconds() < 10 ? "0" + objToday.getSeconds() : objToday.getSeconds(),
+                                        curMeridiem = objToday.getHours() > 12 ? "PM" : "AM";
+                        var today = curHour + ":" + curMinute + "." + curSeconds + curMeridiem + " " + dayOfWeek + " " + dayOfMonth + " of " + curMonth + ", " + curYear;
+                        if($("#output").val()=="")
+                        {
+                            $("#output").val("---------------------------------------------------------------------"+"\n"+today+"\n"+"---------------------------------------------------------------------"+"\n"+msg);
+                        }
+                        else
+                        {
+                            $("#output").val($("#output").val()+"---------------------------------------------------------------------"+"\n"+today+"\n"+"---------------------------------------------------------------------"+"\n"+msg);
+                        }
+                        $('#output').scrollTop($('#output')[0].scrollHeight);
+                        /*if(msg==1337)
                         {
                             $("#output").css("color","green");
                             $("#output").html("SUCCESS");
@@ -106,87 +276,71 @@
                             $("#output").html("FAIL");
                             audioElement.setAttribute('src', '<%=request.getContextPath() %>/mp3/HUMAN VOICE CROWD LOUD OHH 01.mp3');
                             audioElement.play();
-                        }
+                        }*/
                     });
                 });
-                $( "#stop" ).click(function() {
+                $("#clear").click(function() 
+                {
+                    $('#output').val("");
+                });
+                $("#getimg").click(function() 
+                {
+                       var host = location.protocol + '//' + location.hostname + ':' + location.port;
+                       $("#outputimg").attr('src', host+"/raspberrypi/img/left.jpg");
+                       $("#outputimg").css('display', 'block');
+                });
+                /*$("#stop").click(function() {
                     if(jqXHR){
                         jqXHR.abort();
                     }
                     audioElement.setAttribute('src', '');
                     //audioElement.currentTime = 0;
                     audioElement.pause();
-                });
+                });*/
             });
         </script>
         <div id="accordion">
-            <h3>Section 1</h3>
-            <div>
-                <table>
-                    <tr>
-                        <td>Number 1: <input type="text" id="number1"></td>
-                        <td>Number 2: <input type="text" id="number2"></td>
-                    </tr>
-                    <tr>
-                        <td><button id="start">Start</button></td>
-                        <td><button id="stop">Stop</button></td>
-                    </tr>
-                </table>
-            </div>
-            <h3>Section 2</h3>
+            <h3>Python-Konfigurationswerte setzen</h3>
             <div>
                 <table>
                     <tr>
                         <td>
-                          <select id="configfilelist">
-                          </select>
+                          <select id="configfilelist"></select>
                         </td>
                         <td>
-                          <select id="configsectionlist">
-                          </select>
+                          <select id="configsectionlist"></select>
                         </td>
                         <td>
-                          <select id="configlist">
-                          </select>
+                          <select id="configlist"></select>
                         </td>
                     </tr>
                     <tr>
-                        <td><button id="start2">Start</button></td>
-                        <td><button id="stop2">Stop</button></td>
+                        <td><input type="text" id="keyvalue" value=""></td>
+                        <td><button id="setvalue">Wert setzen</button></td>
                     </tr>
                 </table>
             </div>
-            <h3>Section 3</h3>
+            <h3>Pythonscripts ausführen</h3>
             <div>
-              <p>
-              Nam enim risus, molestie et, porta ac, aliquam ac, risus. Quisque lobortis.
-              Phasellus pellentesque purus in massa. Aenean in pede. Phasellus ac libero
-              ac tellus pellentesque semper. Sed ac felis. Sed commodo, magna quis
-              lacinia ornare, quam ante aliquam nisi, eu iaculis leo purus venenatis dui.
-              </p>
-              <ul>
-                <li>List item one</li>
-                <li>List item two</li>
-                <li>List item three</li>
-              </ul>
-            </div>
-            <h3>Section 4</h3>
-            <div>
-              <p>
-              Cras dictum. Pellentesque habitant morbi tristique senectus et netus
-              et malesuada fames ac turpis egestas. Vestibulum ante ipsum primis in
-              faucibus orci luctus et ultrices posuere cubilia Curae; Aenean lacinia
-              mauris vel est.
-              </p>
-              <p>
-              Suspendisse eu nisl. Nullam ut libero. Integer dignissim consequat lectus.
-              Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-              inceptos himenaeos.
-              </p>
+                <table>
+                    <tr>
+                        <td>
+                            <select id="pythonfilelist"></select>
+                        </td>
+                        <td><button id="run">Ausführen</button></td>
+                        <td><button id="clear">Leeren</button></td>
+                        <td><button id="getimg">Neues Bild laden</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3"><textarea id="output" style="width: 300px; height: 150px; resize: none; color: black;" disabled></textarea></td>
+                        <td><img id="outputimg" style="width: 150px; height: 150px; display: none;"></td>
+                    </tr>
+                </table>
             </div>
           </div>
+        <br/>
         <div>
-            <div id="output"></div>
+            <div id="systemstatus"></div>
         </div>
     </body>
 </html>
