@@ -7,6 +7,7 @@
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery-ui-1.10.3.custom.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery-migrate-1.2.1.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery.timer.js'></script>
+            <script type='text/javascript' src='<%=request.getContextPath() %>/js/responsivevoice.js'></script>
             <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
             <title>Raspberry Pi Controller</title>
     </head>
@@ -23,14 +24,17 @@
                 $("#systemstatus").css("color","black");
                 $("#systemstatus").css("font-size","16px");
                 $("#systemstatus").html("SYSTEM READY");
-                var audioElement = document.createElement('audio');
-                audioElement.setAttribute('src', '<%=request.getContextPath() %>/mp3/Power Up SYSTEM Ready.mp3');
-                audioElement.setAttribute('autoplay', 'autoplay');
-                $.get();
-                audioElement.addEventListener("load", function() {
-                audioElement.play();
-                }, true);
-                audioElement.play();
+                var voice = responsiveVoice;
+                voice.setDefaultVoice('UK English Male');
+                voice.speak('SYSTEM READY');
+                //var audioElement = document.createElement('audio');
+                //audioElement.setAttribute('src', '<%=request.getContextPath() %>/mp3/Power Up SYSTEM Ready.mp3');
+                //audioElement.setAttribute('autoplay', 'autoplay');
+                //$.get();
+                //audioElement.addEventListener("load", function() {
+                //audioElement.play();
+                //}, true);
+                //audioElement.play();
                 $('#pythonfilelist').empty();
                 jqXHR = $.ajax(
                 {
@@ -230,7 +234,8 @@
                 
                 $("#run").click(function() 
                 {
-                    audioElement.pause();
+                    voice.cancel();
+                    //audioElement.pause();
                     jqXHR = $.ajax(
                     {
                             type: "POST",
@@ -263,6 +268,7 @@
                             $("#output").val($("#output").val()+"---------------------------------------------------------------------"+"\n"+today+"\n"+"---------------------------------------------------------------------"+"\n"+msg);
                         }
                         $('#output').scrollTop($('#output')[0].scrollHeight);
+                        voice.speak(msg);
                         /*if(msg==1337)
                         {
                             $("#output").css("color","green");
