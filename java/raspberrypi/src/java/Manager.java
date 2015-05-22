@@ -217,20 +217,14 @@ public class Manager extends HttpServlet
         if(action.equals("run"))
         {
             // Get params
-            /*int number1 = 1;
-            if(request.getParameter("number1")!="" && request.getParameter("number1")!=null){
-                String tmp_number1 = new String(request.getParameter("number1").getBytes("iso-8859-1"), "UTF-8");
-                if(StringUtils.isNumericSpace(tmp_number1) && tmp_number1!="0"){ number1=Integer.parseInt(tmp_number1); }
+            String pythonfile="";
+            if(request.getParameter("pythonfile")!="" && request.getParameter("pythonfile")!=null){
+                pythonfile = new String(request.getParameter("pythonfile").getBytes("iso-8859-1"), "iso-8859-1");
             }
-            int number2 = 1;
-            if(request.getParameter("number2")!="" && request.getParameter("number2")!=null){
-                String tmp_number2 = new String(request.getParameter("number2").getBytes("iso-8859-1"), "UTF-8");
-                if(StringUtils.isNumericSpace(tmp_number2) && tmp_number2!="0"){ number2=Integer.parseInt(tmp_number2); }
-            }*/
 
             try{
                 //out.println(startPythonScript(getServletContext().getRealPath("/")+"python/test.py", number1, number2));
-                out.println(startPythonScript(getServletContext().getRealPath("/")+"python/test.py"));
+                out.println(startPythonScript(getServletContext().getRealPath("/")+"python/"+pythonfile));
             }
             catch(Exception e){
                 StringWriter errors = new StringWriter();
