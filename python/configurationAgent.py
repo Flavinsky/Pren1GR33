@@ -2,12 +2,13 @@ __author__ = 'orceN'
 
 import objectDetectionDom
 
-def createBinaryPicture():
-    objectDetectionDom
 
 if __name__ == '__main__':
     print("======================================================================")
-    print("Configuration started")
+    print("Configuration test started")
     print("----------------------------------------------------------------------")
-    print("create reference binary picture")
-    createBinaryPicture()
+    print("start object detection on debug mode")
+    objectDetectionDom.getDistanceToBin(True)
+    print("----------------------------------------------------------------------")
+    print("Configuration test - job done!")
+    print("======================================================================")
