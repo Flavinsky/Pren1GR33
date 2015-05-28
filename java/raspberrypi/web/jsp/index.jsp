@@ -8,6 +8,7 @@
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery-migrate-1.2.1.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery.timer.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/responsivevoice.js'></script>
+            <script type='text/javascript' src='<%=request.getContextPath() %>/js/imgpreview.full.jquery.js'></script>
             <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
             <title>Raspberry Pi Controller</title>
     </head>
@@ -17,8 +18,9 @@
             {
                 return this.replace(new RegExp(str1.replace(/([\/\,\!\\\^\$\{\}\[\]\(\)\.\*\+\?\|\<\>\-\&])/g,"\\$&"),(ignore?"gi":"g")),(typeof(str2)=="string")?str2.replace(/\$/g,"$$$$"):str2);
             } 
+            
             $( document ).ready(function() 
-            {
+            {                         
                 var jqXHR;
                 $( "#accordion" ).accordion();
                 $("#systemstatus").css("color","black");
@@ -292,8 +294,26 @@
                 $("#getimg").click(function() 
                 {
                        var host = location.protocol + '//' + location.hostname + ':' + location.port;
-                       $("#outputimg").attr('src', host+"/raspberrypi/img/left.jpg");
-                       $("#outputimg").css('display', 'block');
+                       $("#outputimgbinary").attr('href', host+"/raspberrypi/python/binary.jpg");
+                       $("#outputimgbinary").css('display', 'block');
+                       $("#outputimgcontours").attr('href', host+"/raspberrypi/python/contours.jpg");
+                       $("#outputimgcontours").css('display', 'block');
+                        $('#outputimgbinary, #outputimgcontours').imgPreview({
+                            containerID: 'imgPreviewWithStyles',
+                            imgCSS: {
+                                // Limit preview size:
+                                //height: 150,
+                                width: 1200
+                            },
+                            // When container is shown:
+                            onShow: function(link){
+                                $('<span>' + $(link).text() + '</span>').appendTo(this);
+                            },
+                            // When container hides: 
+                            onHide: function(link){
+                                $('span', this).remove();
+                            }
+                        });
                 });
                 /*$("#stop").click(function() {
                     if(jqXHR){
@@ -335,11 +355,12 @@
                         </td>
                         <td><button id="run">Ausführen</button></td>
                         <td><button id="clear">Leeren</button></td>
-                        <td><button id="getimg">Neues Bild laden</button></td>
+                        <td><button id="getimg">Neue Bilder laden</button></td>
                     </tr>
                     <tr>
-                        <td colspan="3"><textarea id="output" style="width: 300px; height: 150px; resize: none; color: black;" disabled></textarea></td>
-                        <td><img id="outputimg" style="width: 150px; height: 150px; display: none;"></td>
+                        <td colspan="2"><textarea id="output" style="width: 300px; height: 150px; resize: none; color: black;" disabled></textarea></td>
+                        <td><a id="outputimgbinary" style="display:none;">Binary Image</a></td>
+                        <td><a id="outputimgcontours" style="display:none;">Contours Image</a></td>
                     </tr>
                 </table>
             </div>
