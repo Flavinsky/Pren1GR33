@@ -50,8 +50,8 @@
                     for(var i = 0; i < files.length; i++)
                     {
                         $('#pythonfilelist').append($('<option>', {
-                            value: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
-                            text: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                            value: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ',''),
+                            text: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
                         }));
                     }
                 });
@@ -70,8 +70,8 @@
                     for(var i = 0; i < files.length; i++)
                     {
                         $('#configfilelist').append($('<option>', {
-                            value: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
-                            text: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                            value: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ',''),
+                            text: files[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
                         }));
                     }
                     $('#configsectionlist').empty();
@@ -89,8 +89,8 @@
                         for(var i = 0; i < sections.length; i++)
                         {
                             $('#configsectionlist').append($('<option>', {
-                                value: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
-                                text: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                                value: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ',''),
+                                text: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
                             }));
                         }
                         $('#configlist').empty();
@@ -108,8 +108,8 @@
                             for(var i = 0; i < configs.length; i++)
                             {
                                 $('#configlist').append($('<option>', {
-                                    value: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
-                                    text: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                                    value: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ',''),
+                                    text: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
                                 }));
                             }
                             jqXHR = $.ajax(
@@ -143,8 +143,8 @@
                        for(var i = 0; i < sections.length; i++)
                        {
                            $('#configsectionlist').append($('<option>', {
-                               value: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
-                               text: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                               value: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ',''),
+                               text: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
                            }));
                        }
                         jqXHR = $.ajax(
@@ -177,8 +177,8 @@
                        for(var i = 0; i < configs.length; i++)
                        {
                            $('#configlist').append($('<option>', {
-                               value: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n',''),
-                               text: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','')
+                               value: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ',''),
+                               text: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
                            }));
                        }
                         jqXHR = $.ajax(

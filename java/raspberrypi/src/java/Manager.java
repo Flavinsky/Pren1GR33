@@ -88,7 +88,7 @@ public class Manager extends HttpServlet
                 configfile = new String(request.getParameter("configfile").getBytes("iso-8859-1"), "iso-8859-1");
             }
 
-            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python/"+configfile));
+            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python\\"+configfile));
             Set<String> sectionNames = ini.keySet();
             
             ArrayList<String> tmpsections = new ArrayList<String>();
@@ -115,7 +115,7 @@ public class Manager extends HttpServlet
                 configsection = new String(request.getParameter("configsection").getBytes("iso-8859-1"), "iso-8859-1");
             }
 
-            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python/"+configfile));
+            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python\\"+configfile));
             
             ArrayList<String> tmpkeys = new ArrayList<String>();
             String keys = "";
@@ -152,7 +152,7 @@ public class Manager extends HttpServlet
                 configkey = new String(request.getParameter("configkey").getBytes("iso-8859-1"), "iso-8859-1");
             }
 
-            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python/"+configfile));
+            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python\\"+configfile));
             
             String keyvalue = "";
             for (String sectionName: ini.keySet()) {
@@ -194,8 +194,8 @@ public class Manager extends HttpServlet
                 newconfigvalue = new String(request.getParameter("newconfigvalue").getBytes("iso-8859-1"), "iso-8859-1");
             }
 
-            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python/"+configfile));
-            
+            Ini ini = new Ini(new File(getServletContext().getRealPath("/")+"python\\"+configfile));
+
             String keyvalue = "";
             for (String sectionName: ini.keySet()) {
                 Section section = ini.get(sectionName);
@@ -224,7 +224,7 @@ public class Manager extends HttpServlet
 
             try{
                 //out.println(startPythonScript(getServletContext().getRealPath("/")+"python/test.py", number1, number2));
-                out.println(startPythonScript(getServletContext().getRealPath("/")+"python/"+pythonfile));
+                out.println(startPythonScript(getServletContext().getRealPath("/")+"python\\"+pythonfile));
             }
             catch(Exception e){
                 StringWriter errors = new StringWriter();
