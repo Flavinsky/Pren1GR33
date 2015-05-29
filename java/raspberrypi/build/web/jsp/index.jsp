@@ -3,12 +3,14 @@
     <head>
             <link href='<%=request.getContextPath() %>/css/jquery-ui-1.10.3.custom.css' rel='stylesheet'>
             <link href='<%=request.getContextPath() %>/css/main.css' rel='stylesheet'>
+            <link href='<%=request.getContextPath() %>/css/TimeCircles.css' rel='stylesheet'>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery-1.9.1.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery-ui-1.10.3.custom.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery-migrate-1.2.1.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/jquery.timer.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/responsivevoice.js'></script>
             <script type='text/javascript' src='<%=request.getContextPath() %>/js/imgpreview.full.jquery.js'></script>
+            <script type='text/javascript' src='<%=request.getContextPath() %>/js/TimeCircles.js'></script>
             <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
             <title>Raspberry Pi Controller</title>
     </head>
@@ -20,7 +22,14 @@
             } 
             
             $( document ).ready(function() 
-            {                         
+            {                 
+                $("#stopwatch").TimeCircles({fg_width: 0.1, bg_width: 1.2, start: false, time: {
+                    Days: { color: "#C0C8CF", show: false },
+                    Hours: { color: "#C0C8CF", show: false },
+                    Minutes: { color: "#C0C8CF" },
+                    Seconds: { color: "#C0C8CF" }
+                }});
+
                 var jqXHR;
                 $( "#accordion" ).accordion();
                 $("#systemstatus").css("color","black");
@@ -149,17 +158,37 @@
                                text: sections[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
                            }));
                        }
+                       $('#configlist').empty();
                         jqXHR = $.ajax(
                         {
                                 type: "POST",
                                 contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
                                 dataType: "text",
-                                data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text(), configkey: $("#configlist option:selected").text() },
-                                url: "<%=request.getContextPath() %>/Manager?action=configvalue"
+                                data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text() },
+                                url: "<%=request.getContextPath() %>/Manager?action=configlist"
                                 //beforeSend: function() { $('.ajax').show(); }
                         }).done(function(msg) 
                         {
-                            $("#keyvalue").val(msg);
+                            var configs = msg.split(',');
+                            for(var i = 0; i < configs.length; i++)
+                            {
+                                $('#configlist').append($('<option>', {
+                                    value: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ',''),
+                                    text: configs[i].replaceAll(']','').replaceAll('[','').replaceAll('\r','').replaceAll('\n','').replaceAll(' ','')
+                                }));
+                            }
+                             jqXHR = $.ajax(
+                             {
+                                     type: "POST",
+                                     contentType: "application/x-www-form-urlencoded; charset=ISO-8859-1",
+                                     dataType: "text",
+                                     data: { configfile: $("#configfilelist option:selected").text(), configsection: $("#configsectionlist option:selected").text(), configkey: $("#configlist option:selected").text() },
+                                     url: "<%=request.getContextPath() %>/Manager?action=configvalue"
+                                     //beforeSend: function() { $('.ajax').show(); }
+                             }).done(function(msg) 
+                             {
+                                 $("#keyvalue").val(msg);
+                             });
                         });
                    });
                 });
@@ -236,6 +265,16 @@
                 
                 $("#run").click(function() 
                 {
+                    $("#stopwatch").TimeCircles().destroy(); 
+
+                $("#stopwatch").TimeCircles({fg_width: 0.1, bg_width: 1.2, start: false, time: {
+                    Days: { color: "#C0C8CF", show: false },
+                    Hours: { color: "#C0C8CF", show: false },
+                    Minutes: { color: "#C0C8CF" },
+                    Seconds: { color: "#C0C8CF" }
+                }});
+
+                    $("#stopwatch").TimeCircles().start(); 
                     voice.cancel();
                     //audioElement.pause();
                     jqXHR = $.ajax(
@@ -271,6 +310,7 @@
                         }
                         $('#output').scrollTop($('#output')[0].scrollHeight);
                         voice.speak(msg);
+                        $("#stopwatch").TimeCircles().stop();
                         /*if(msg==1337)
                         {
                             $("#output").css("color","green");
@@ -358,9 +398,10 @@
                         <td><button id="getimg">Neue Bilder laden</button></td>
                     </tr>
                     <tr>
-                        <td colspan="2"><textarea id="output" style="width: 300px; height: 150px; resize: none; color: black;" disabled></textarea></td>
+                        <td><textarea id="output" style="width: 300px; height: 150px; resize: none; color: black;" disabled></textarea></td>
                         <td><a id="outputimgbinary" style="display:none;">Binary Image</a></td>
                         <td><a id="outputimgcontours" style="display:none;">Contours Image</a></td>
+                        <td><div id="stopwatch"></div></td>
                     </tr>
                 </table>
             </div>

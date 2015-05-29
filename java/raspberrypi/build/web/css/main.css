@@ -17,3 +17,8 @@ body table { font-weight:bold; font-family:Arial; font-size:12px; }
     display: block;
     padding: 10px 0 3px 0;
 }
+
+#stopwatch {
+    width: 400px;
+    height: 100px;
+}
