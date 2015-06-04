@@ -54,19 +54,8 @@ if __name__ == '__main__':
     sleep(0.5)
 
     # sleep while shooting
-    sleep(8)
+    sleep(6)
 
     print("----------------------------------------------------------------------")
     print("Agent - job done!")
     print("======================================================================")
-
-    serialConnection.write(b'DC off\r')
-    sleep(0.5)
-    serialConnection.write(b'BLDC off\r')
-    sleep(0.5)
-    serialConnection.write(b'stepper home go\r')
-    sleep(0.5)
-    serialConnection.write(b'BLDC init\r')
-    sleep(4)
-    serialConnection.write(b'stepper softhiz\r')
-    sleep(0.5)
