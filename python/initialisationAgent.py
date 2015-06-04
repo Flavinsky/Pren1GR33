@@ -4,7 +4,7 @@ import serial
 import sys
 from time import sleep
 
-rpmBLCD = 4500
+rpmBLCD = 6700
 
 def openSerialConnection():
     print("----------------------------------------------------------------------")
@@ -37,6 +37,8 @@ if __name__ == '__main__':
     sleep(3)
     serialConnection.write(b'stepper home set\r')
     sleep(0.5)
+    serialConnection.write(b'DC up\r')
+    sleep(4)
 
     print("----------------------------------------------------------------------")
     print ("initialize BLDC")

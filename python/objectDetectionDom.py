@@ -1,17 +1,18 @@
 __author__ = 'Dominic Schuermann'
 
-# from picamera.array import PiRGBArray
-# from picamera import PiCamera
+from picamera.array import PiRGBArray
+from picamera import PiCamera
 import time
 import cv2
 import numpy as np
 import sys
 import ConfigParser
 import argparse
+import os
 
 # define config parser
 config = ConfigParser.RawConfigParser()
-config.read('objectDetectionDefinition.cfg')
+config.read('/home/pi/apache-tomcat-7.0.59/webapps/raspberrypi/python/objectDetectionDefinition.cfg')
 
 # define argsparser
 argsparser = argparse.ArgumentParser(description='object detection logic')
@@ -21,6 +22,8 @@ argsparser.add_argument('-d', '--debug', dest='debugmode', action='store_true',
                         help='logic will be executed in debug mode')
 argsparser.set_defaults(debugmode=False)
 args = argsparser.parse_args()
+
+print os.system("id")
 
 # define threshold
 binaryThreshValue = config.getfloat('Threshold', 'BinaryThreshValue')
@@ -44,19 +47,17 @@ def getDistanceToBin(debugmode):
     print("----------------------------------------------------------------------")
     print("imageDetection - getDistanceToBin started")
 
-    # # initialize the camera and grab a reference to the raw camera capture
-    # camera = PiCamera()
-    # camera.resolution = (2592, 1944)
-    # rawCapture = PiRGBArray(camera, size=(2592, 1944))
-    #
-    # # allow the camera to warmup
-    # time.sleep(0.1)
-    #
-    # # grab an image from the camera
-    # camera.capture(rawCapture, format="bgr")
-    # img = rawCapture.array
+    # initialize the camera and grab a reference to the raw camera capture
+    camera = PiCamera()
+    camera.resolution = (2592, 1944)
+    rawCapture = PiRGBArray(camera, size=(2592, 1944))
 
-    img = cv2.imread('images/newRight.jpg')
+    # allow the camera to warmup
+    time.sleep(0.1)
+
+    # grab an image from the camera
+    camera.capture(rawCapture, format="bgr")
+    img = rawCapture.array
 
     # Read parameters
     height, width, depth = img.shape
@@ -85,14 +86,15 @@ def getDistanceToBin(debugmode):
     # invert picture
     processingGreyInv = cv2.bitwise_not(processingGrey)
     processingGreyInvCopy = processingGreyInv.copy()
-    referenceGreyInv = cv2.bitwise_not(referenceGrey)
 
     # create binary picture
     ret, binaryImage = cv2.threshold(processingGreyInvCopy, binaryThreshValue, binaryThreshMax, cv2.THRESH_BINARY)
     if(debugmode):
         cv2.imwrite("binary.jpg", binaryImage)
 
-    ret, referenceBinary = cv2.threshold(referenceGreyInv, 0, 255, cv2.THRESH_BINARY)
+    ret, referenceBinary = cv2.threshold(referenceGrey, 0, 255, cv2.THRESH_BINARY)
+    if(debugmode):
+        cv2.imwrite("reference.jpg", referenceBinary)
 
     # filtering
     kernel = np.ones((8, 8), np.uint8)
@@ -109,12 +111,14 @@ def getDistanceToBin(debugmode):
     contourCentroidY = 0
     differenceCentroidX = 0
 
-    for cnt in referenceContours:
+    pictureCentroidX = int(analyzedWidth / 2)
 
-        # get centroid of whole picture, base reference for angle correction
-        fullMoments = cv2.moments(cnt)
-        pictureCentroidX = int(fullMoments['m10']/fullMoments['m00'])
-        pictureCentroidY = int(fullMoments['m01']/fullMoments['m00'])
+    # for cnt in referenceContours:
+    #
+    #     # get centroid of whole picture, base reference for angle correction
+    #     fullMoments = cv2.moments(cnt)
+    #     pictureCentroidX = int(fullMoments['m10']/fullMoments['m00'])
+    #     pictureCentroidY = int(fullMoments['m01']/fullMoments['m00'])
 
     # evaluate contours on picture -> find bin
     contours2, hierarchy2 = cv2.findContours(filteredBinaryImage2, cv2.RETR_TREE, cv2.CHAIN_APPROX_SIMPLE)

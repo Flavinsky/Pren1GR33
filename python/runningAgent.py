@@ -28,14 +28,14 @@ if __name__ == '__main__':
     out = ''
     serialConnection = openSerialConnection()
 
-    distanceToBin = objectDetectionDom.getDistanceToBin()
+    distanceToBin = objectDetectionDom.getDistanceToBin(False)
     calculatedAngle = alignmentCalculator.calculateAngle(distanceToBin)
     stepperCommand = alignmentCalculator.getCommand(calculatedAngle)
 
     print("----------------------------------------------------------------------")
     print("Agent - align for shooting")
 
-    serialConnection.write(b'' + stepperCommand)
+    serialConnection.write(b'' + str(stepperCommand))
     sleep(0.5)
     serialConnection.write(b'\r')
     sleep(0.5)
@@ -57,7 +57,8 @@ if __name__ == '__main__':
     sleep(8)
 
     print("----------------------------------------------------------------------")
-    print("Agent - shutdown")
+    print("Agent - job done!")
+    print("======================================================================")
 
     serialConnection.write(b'DC off\r')
     sleep(0.5)
@@ -65,7 +66,7 @@ if __name__ == '__main__':
     sleep(0.5)
     serialConnection.write(b'stepper home go\r')
     sleep(0.5)
-
-    print("----------------------------------------------------------------------")
-    print("Agent - job done!")
-    print("======================================================================")
+    serialConnection.write(b'BLDC init\r')
+    sleep(4)
+    serialConnection.write(b'stepper softhiz\r')
+    sleep(0.5)

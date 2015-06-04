@@ -5,7 +5,7 @@ import math
 import ConfigParser
 
 config = ConfigParser.RawConfigParser()
-config.read('alignmentCalculatorDefinitions.cfg')
+config.read('/home/pi/apache-tomcat-7.0.59/webapps/raspberrypi/python/alignmentCalculatorDefinitions.cfg')
 
 # define real environment fields - all dimensions in cm
 realFieldSizeX = config.getfloat('RealField', 'realFieldSizeX')
@@ -45,10 +45,10 @@ def getCommand(angle):
     print ("number of steps to move", stepsToMove)
 
     direction = "f "
-    if stepsToMove > 0:
+    if stepsToMove < 0:
         direction = "r "
 
-    command = "stepper move " + direction + str(stepsToMove)
+    command = "stepper move " + direction + str(math.fabs(stepsToMove))
     print (command)
     return command
 
