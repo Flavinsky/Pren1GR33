@@ -206,10 +206,10 @@ def getDistanceToBin(debugmode):
             return distanceToCentroid
         else:
             print("contourCentroidX not defined - No processable contour found!")
-            return 0
+            return False
     else:
         print("pictureCentroidX not defined - No processable picture found!")
-        return 0
+        return False
 
 if __name__ == '__main__':
     print("----------------------------------------------------------------------")

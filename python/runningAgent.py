@@ -25,19 +25,25 @@ if __name__ == '__main__':
     print("======================================================================")
     print("Agent - started")
 
+    distanceToBin = objectDetectionDom.getDistanceToBin(False)
+    command = alignmentCalculator.calculateAngle(distanceToBin)
+
+    if not(distanceToBin):
+        sys.exit()
+
     out = ''
     serialConnection = openSerialConnection()
-
-    distanceToBin = objectDetectionDom.getDistanceToBin(False)
-    calculatedAngle = alignmentCalculator.calculateAngle(distanceToBin)
-    stepperCommand = alignmentCalculator.getCommand(calculatedAngle)
 
     print("----------------------------------------------------------------------")
     print("Agent - align for shooting")
 
-    serialConnection.write(b'' + str(stepperCommand))
+    print('steppercommand:' + command)
+
+    stprCommand = str(command)
+
+    serialConnection.write(stprCommand)
     sleep(0.5)
-    serialConnection.write(b'\r')
+    serialConnection.write('\r')
     sleep(0.5)
 
     while serialConnection.inWaiting() > 0:

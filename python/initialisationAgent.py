@@ -4,7 +4,7 @@ import serial
 import sys
 from time import sleep
 
-rpmBLCD = 6700
+rpmBLCD = 5300
 
 def openSerialConnection():
     print("----------------------------------------------------------------------")
